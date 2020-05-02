@@ -1,9 +1,12 @@
-import * as React from 'react';
-
+import React from 'react';
 import MSGreact from './App/MSGreact';
 
-export default function App() {
-  return (
-    <MSGreact />
-  );
+const App = ()=>{
+  return(
+    <>
+      <MSGreact/>
+    </>
+  )
 }
+
+export default App;

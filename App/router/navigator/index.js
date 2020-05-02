@@ -1,4 +1,4 @@
-export {default as HomeScreen} from './HomeScreen';
-export {default as Categories} from './Categories';
-export {default as Videos} from './Videos';
-export {default as Profile} from './Profile';
+export {default as HomeStackNavigator} from './HomeStackNavigator';
+export {default as CategoriesStackNavigator} from './CategoriesStackNavigator';
+export {default as VideosStackNavigator} from './VideosStackNavigator';
+export {default as SearchStackNavigator} from './SearchStackNavigator';
