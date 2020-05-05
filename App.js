@@ -1,10 +1,14 @@
 import React from 'react';
+import {Provider} from 'react-redux';
+import store from './App/store';
 import MSGreact from './App/MSGreact';
 
 const App = ()=>{
   return(
     <>
-      <MSGreact/>
+      <Provider store={store}>
+        <MSGreact/>
+      </Provider>
     </>
   )
 }
