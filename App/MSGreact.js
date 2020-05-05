@@ -1,3 +1,3 @@
-import Router from './router';
+import Navigation from './navigation';
 
-export default Router;
+export default Navigation;
