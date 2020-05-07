@@ -22,7 +22,7 @@ const TopStories = ({navigation}) => {
   if( !select ){
     return null
   }
-  console.log(select, "mystate")
+  // console.log(select, "mystate")
   return(
     <View style={[styles.scene]}>
       <FlatList
@@ -41,8 +41,8 @@ const TopStories = ({navigation}) => {
 const styles = StyleSheet.create({
   scene: {
     flex: 1,
-    width: 5000,
-    backgroundColor: '#fff',
+    width: '100%',
+    backgroundColor: '#f0f0f0',
   },
 });
 
