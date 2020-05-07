@@ -1,3 +1,4 @@
+import './App/@fake-db'
 import React from 'react';
 import {Provider} from 'react-redux';
 import store from './App/store';

@@ -1,12 +1,10 @@
 import { combineReducers } from 'redux';
 import appSettings from './settings.reducer';
-import news from './content/news.reducer';
+import news from './contents/news.reducer';
 
-const createReducer = (asyncReducers) =>
-  combineReducers({
+const createReducer = combineReducers({
     appSettings,
     news,
-    ...asyncReducers
   });
 
 export default createReducer

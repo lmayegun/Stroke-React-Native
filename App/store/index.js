@@ -1,28 +1,21 @@
 import {createStore, compose, applyMiddleware} from 'redux';
 import logger from 'redux-logger';
+import createSagaMiddleware from 'redux-saga';
 import createReducer from './reducers';
+import APPsagas from './sagas';
 // import {dispatch} from 'react-redux';
 
+const sagaMiddeleware = createSagaMiddleware()
 
 const store = createStore(
   createReducer,
-  applyMiddleware(logger)
+  applyMiddleware(logger, sagaMiddeleware),
 );
 
-store.dispatch({type: "TEXT",
-                payload:{
-                  LostFrequency: "love you",
-                  Avicici: "Heaven",
-                  ColdPlay: "Like I love you"
-                }
+store.subscribe(()=>{
+  // console.log(store.getState(), 'hh')
 })
 
-store.dispatch({type: "NEWS",
-                payload:{
-                  title: "Aphasia",
-                  body: "Chunky",
-                  date: "199106"
-                }
-})
+sagaMiddeleware.run(APPsagas);
 
 export default store;
