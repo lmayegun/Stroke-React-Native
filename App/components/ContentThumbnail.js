@@ -1,17 +1,20 @@
 import React from 'react';
-import {View, Image, Text, StyleSheet} from 'react-native';
+import {View, Image, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import {withNavigation} from 'react-navigation';
 
 const ContentThumbnail = ({title, image}) => {
   return(
     <View style={[styles.root]}>
-      <Image
-        style={[styles.image]}
-        source={image}
+      <TouchableOpacity style={{display: 'flex',
+      flexDirection: 'row',}}>
+        <Image
+          style={[styles.image]}
+          source={image}
         />
         <View>
           <Text style={{paddingRight: 10, width: 180}}> Content {title} {image}</Text>
         </View>
+      </TouchableOpacity>
     </View>
   )
 }

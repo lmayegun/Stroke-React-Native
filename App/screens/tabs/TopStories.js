@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { View, StyleSheet, Dimensions, Button, Text, FlatList} from 'react-native';
+import { View, StyleSheet, Dimensions, FlatList} from 'react-native';
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 import { useDispatch, useSelector } from 'react-redux';
 import {withNavigation} from 'react-navigation';
@@ -41,7 +41,7 @@ const TopStories = ({navigation}) => {
 const styles = StyleSheet.create({
   scene: {
     flex: 1,
-    width: '100%',
+    width: 380,
     backgroundColor: '#f0f0f0',
   },
 });
