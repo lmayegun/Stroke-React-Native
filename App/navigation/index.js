@@ -5,6 +5,8 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 
+import VideoPlayerScreen from '../screens/VideoPlayerScreen';
+
 import {
   HomeStackNavigator,
   CategoriesStackNavigator,
@@ -54,6 +56,9 @@ const Navigation = createStackNavigator(
     Edit: {
       screen: SearchStackNavigator,
     },
+    Video:{
+      screen:VideoPlayerScreen
+    }
   },
   {
     initialRouteName: 'MainTab',

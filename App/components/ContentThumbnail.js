@@ -2,11 +2,16 @@ import React from 'react';
 import {View, Image, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import {withNavigation} from 'react-navigation';
 
-const ContentThumbnail = ({title, image}) => {
+const ContentThumbnail = ({title, image, navigation}) => {
   return(
     <View style={[styles.root]}>
-      <TouchableOpacity style={{display: 'flex',
-      flexDirection: 'row',}}>
+      <TouchableOpacity
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+        }}
+        onPress={()=>{navigation.navigate('Video')}}
+        >
         <Image
           style={[styles.image]}
           source={image}

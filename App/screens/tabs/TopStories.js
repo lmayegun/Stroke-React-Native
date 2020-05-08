@@ -7,6 +7,8 @@ import {withNavigation} from 'react-navigation';
 import {ContentThumbnail} from '../../components';
 import * as Actions from '../../store/actions/contents/news.actions';
 
+const { width } = Dimensions.get('window');
+
 const TopStories = ({navigation}) => {
   const dispatch = useDispatch();
   const select = useSelector( ({news}) => news.newsState );
@@ -41,7 +43,7 @@ const TopStories = ({navigation}) => {
 const styles = StyleSheet.create({
   scene: {
     flex: 1,
-    width: 380,
+    width: width,
     backgroundColor: '#f0f0f0',
   },
 });
