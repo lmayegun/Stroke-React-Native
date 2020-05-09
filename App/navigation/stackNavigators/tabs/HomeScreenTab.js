@@ -4,7 +4,7 @@ import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 import {withNavigation} from 'react-navigation';
 import TopStories from '../../../screens/tabs/TopStories';
 
-const initialLayout = { width: Dimensions.get('window').width, backgroundColor: 'red' };
+const initialLayout = { width: Dimensions.get('window').width};
 const renderTabBar = props =>(
   <TabBar
     {...props}
@@ -21,8 +21,10 @@ const renderTabBar = props =>(
     )}
     bounce={true}
     scrollEnabled={true}
-    getLabelText={({ route }) => <Text style={{padding:0, margin:0, fontSize: 12, color:'white' }}> {route.title} </Text>}
-    style={{height:'auto', padding:0}}
+    inactiveColor={'#000000'}
+    activeColor={'purple'}
+    getLabelText={({ route }) => <Text style={{ padding:0, margin:0, fontSize: 12, fontWeight:'bold'}}> {route.title} </Text>}
+    style={{height:'auto', padding:0, backgroundColor:'white'}}
   />
 )
 

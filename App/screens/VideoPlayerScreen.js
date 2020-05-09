@@ -32,8 +32,9 @@ export default class VideoPlayerScreen extends React.Component {
           resizeMode="cover"
           style={{ width, height: 300 }}
           isMuted={this.state.mute}
+          useNativeControls={true}
       	/>
-        <View style={styles.controlBar}>
+        {/*<View style={styles.controlBar}>
             <MaterialIcons
               name={this.state.mute ? "volume-mute" : "volume-up"}
               size={45}
@@ -46,7 +47,7 @@ export default class VideoPlayerScreen extends React.Component {
               color="white"
               onPress={this.handlePlayAndPause}
             />
-          </View>
+          </View>*/}
       </View>
     );
   }

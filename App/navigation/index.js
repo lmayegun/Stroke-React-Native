@@ -1,11 +1,14 @@
 import React from 'react';
 import {Text, Alert} from 'react-native';
-import { FontAwesome } from '@expo/vector-icons';
+import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 
-import VideoPlayerScreen from '../screens/VideoPlayerScreen';
+import {
+        VideoPlayerScreen,
+        ContentScreen
+}from '../screens';
 
 import {
   HomeStackNavigator,
@@ -53,8 +56,8 @@ const Navigation = createStackNavigator(
     MainTab: {
       screen: MainTabNavigator
     },
-    Edit: {
-      screen: SearchStackNavigator,
+    Content: {
+      screen: ContentScreen,
     },
     Video:{
       screen:VideoPlayerScreen
@@ -67,11 +70,11 @@ const Navigation = createStackNavigator(
       return({
         headerStyle: {
           height: 80,
-          backgroundColor: 'white'
+          backgroundColor: 'purple',
         },
-        title: <FontAwesome name="home" color={'#8e44ad'} size={20} />,
+        title: <FontAwesome name="home" color={'#ffffff'} size={20} />,
         headerTitleAlign: 'center',
-        headerRight: ()=><Text>Extra Info</Text>
+        headerRight: ()=><MaterialCommunityIcons name="dots-vertical" color={'#ffffff'} size={20}/>
       })
     }
   }
