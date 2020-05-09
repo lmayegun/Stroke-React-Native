@@ -3,7 +3,9 @@ import {View, Image, Text, StyleSheet, TouchableOpacity, Dimensions} from 'react
 import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
 import {withNavigation} from 'react-navigation';
 
-const ContentThumbnail = ({title, image, navigation}) => {
+import {colorPalette} from '../utils';
+
+const ContentThumbnail = ({title, image, posted, navigation}) => {
   return(
     <View style={[styles.root]}>
     <TouchableOpacity
@@ -19,19 +21,14 @@ const ContentThumbnail = ({title, image, navigation}) => {
           style={[styles.image]}
         />
         <View style={[styles.summary]}>
-          <View style={{
-            display: 'flex',
-            flexDirection: 'row',
-            alignSelf: 'flex-start',
-            marginBottom: 5
-          }}>
-            <Text style={{paddingRight: 0, paddingLeft: 6, marginRight: 2, flex: 2, backgroundColor: 'purple', color: 'white'}}>Exclusive</Text>
-            <View style={{paddingRight: 10, flex: 4, display: 'flex', flexDirection: 'row'}}>
+          <View style={[styles.timeAndTag]}>
+            <Text style={[styles.tag]}>Exclusive</Text>
+            <View style={[styles.time]}>
               <MaterialCommunityIcons name="progress-clock" color={'#ccc'} size={20} style={{marginRight: 4}} />
-              <Text>3h ago</Text>
+              <Text>{posted}h ago</Text>
             </View>
           </View>
-          <Text style={{paddingRight: 0}}>Content {title}</Text>
+          <Text>{title}</Text>
         </View>
       </TouchableOpacity>
     </View>
@@ -39,14 +36,16 @@ const ContentThumbnail = ({title, image, navigation}) => {
 }
 
 ContentThumbnail.defaultProps = {
-  image: require('../assets/images/west.png')
+  image: require('../assets/images/west.png'),
+  title: 'Example of content title',
+  posted: 2
 }
 
 const styles = StyleSheet.create({
   root:{
     display: 'flex',
     flexDirection: 'row',
-    backgroundColor: '#fff',
+    backgroundColor: colorPalette(),
     marginTop: 10,
     padding: 10,
     justifyContent:'flex-start',
@@ -62,6 +61,26 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingLeft: 20,
     flex: 3
+  },
+  timeAndTag:{
+    display: 'flex',
+    flexDirection: 'row',
+    alignSelf: 'flex-start',
+    marginBottom: 5
+  },
+  tag:{
+    paddingRight: 0,
+    paddingLeft: 6,
+    marginRight: 2,
+    flex: 2,
+    backgroundColor: colorPalette('primary'),
+    color: 'white'
+  },
+  time:{
+    paddingRight: 10,
+    flex: 4,
+    display: 'flex',
+    flexDirection: 'row'
   }
 });
 
