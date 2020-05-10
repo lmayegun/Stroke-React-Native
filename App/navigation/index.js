@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, Alert} from 'react-native';
+import {Text, Alert, Image} from 'react-native';
 import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
@@ -16,6 +16,8 @@ import {
   VideosStackNavigator,
   SearchStackNavigator,
 } from './stackNavigators';
+
+
 
 const MainTabNavigator = createBottomTabNavigator(
   {
@@ -72,7 +74,7 @@ const Navigation = createStackNavigator(
           height: 80,
           backgroundColor: 'purple',
         },
-        title: <FontAwesome name="home" color={'#ffffff'} size={20} />,
+        title: <FontAwesome name="heartbeat" color={'#ffffff'} size={20} />,
         headerTitleAlign: 'center',
         headerRight: ()=><MaterialCommunityIcons name="dots-vertical" color={'#ffffff'} size={20}/>
       })

@@ -1,8 +1,10 @@
 import * as React from 'react';
-import { View, StyleSheet, Dimensions, Button, Text } from 'react-native';
+import { View, StyleSheet, Dimensions, Button, Text, TextInput, CheckBox, Picker } from 'react-native';
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 import {withNavigation} from 'react-navigation';
 import TopStories from '../../../screens/tabs/TopStories';
+
+import {Field, Form, Formik, FormikProps} from 'formik';
 
 const initialLayout = { width: Dimensions.get('window').width};
 const renderTabBar = props =>(
@@ -55,11 +57,52 @@ const HomeScreenTab = ()=> {
   );
 }
 
-const MsgHub = () => (
-  <View style={[styles.scene, { backgroundColor: '#673ab7' }]}>
-    <Text> MSG HUB </Text>
+const MyInput = ({field, form, ...props}) => {
+    return <input {...field} {...props} />;
+};
+
+const MsgHub = () => {
+  const [isSelected, setSelection] = React.useState(false)
+  const [selectedValue, setSelectedValue] = React.useState("java");
+  return (
+  <View style={[styles.scene, { backgroundColor: 'white' }]}>
+    <Formik
+    initialValues={{ email: '', password: '', terms:false}}
+    onSubmit={values => console.log(values)}
+    >
+      {({ handleChange, handleBlur, handleSubmit, values, setFieldValue }) => (
+        <View>
+          <TextInput
+            returnKeyType = { "next" }
+            onChangeText={handleChange('email')}
+            onBlur={handleBlur('email')}
+            value={values.email}
+          />
+          <TextInput
+            onChangeText={handleChange('password')}
+            value={values.password}
+          />
+          <CheckBox
+             type='checkbox'
+             checked={values.terms}
+             onPress={() => handleChange('terms')}
+             style={styles.checkbox}
+           />
+       <Picker
+        selectedValue={selectedValue}
+        style={{ height: 50, width: 150 }}
+        onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
+      >
+        <Picker.Item label="Java" value="java" />
+        <Picker.Item label="JavaScript" value="js" />
+      </Picker>
+          <Button onPress={handleSubmit} title="Submit" />
+        </View>
+      )}
+    </Formik>
   </View>
-);
+  )
+};
 
 const InfoSupport = () => (
   <View style={[styles.scene, { backgroundColor: 'red' }]}>
