@@ -26,6 +26,7 @@ const MsgHub = ( {navigation}) => {
         />
         <Button
           title={'Log in'}
+          onPress={()=>{navigation.navigate('Login')}}
         />
         </View>
       </ImageBackground>

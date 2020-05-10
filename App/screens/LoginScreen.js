@@ -1,8 +1,9 @@
 import React from 'react';
 import {View, Text, StyleSheet, Dimensions} from 'react-native';
+import { Video } from 'expo-av';
 import { MaterialIcons, Octicons } from '@expo/vector-icons';
 
-export default class CreateAccountScreen extends React.Component {
+export default class LoginScreen extends React.Component {
   state = {
     mute: false,
     shouldPlay: true,
@@ -24,7 +25,7 @@ export default class CreateAccountScreen extends React.Component {
     const { width } = Dimensions.get('window');
     return (
       <View style={styles.container}>
-      	<Text style={{ textAlign: 'center' }}> Create Account </Text>
+      	<Text style={{ textAlign: 'center' }}> Login </Text>
       </View>
     );
   }
@@ -33,7 +34,7 @@ export default class CreateAccountScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ffffff',
+    backgroundColor: '#FFFFFF',
     alignItems: 'center',
     justifyContent: 'center',
   },

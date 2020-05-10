@@ -8,7 +8,8 @@ import { createBottomTabNavigator } from 'react-navigation-tabs';
 import {
         VideoPlayerScreen,
         ContentScreen,
-        CreateAccountScreen
+        CreateAccountScreen,
+        LoginScreen
 }from '../screens';
 
 import {
@@ -67,6 +68,9 @@ const Navigation = createStackNavigator(
     },
     CreateAccount: {
       screen: CreateAccountScreen
+    },
+    Login:{
+      screen: LoginScreen
     }
   },
   {
