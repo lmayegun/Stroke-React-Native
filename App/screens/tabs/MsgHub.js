@@ -10,7 +10,7 @@ const image = { uri: "https://i.pinimg.com/originals/11/c0/0c/11c00c702d268a5a77
 const { width } = Dimensions.get('window');
 const centerImageSize = width / 3;
 
-const MsgHub = ( {naviagtion}) => {
+const MsgHub = ( {navigation}) => {
   return (
     <View style={styles.container}>
       <ImageBackground source={image} style={styles.image}>
@@ -22,6 +22,7 @@ const MsgHub = ( {naviagtion}) => {
         <View>
         <Button
           title={'Create account'}
+          onPress={()=>{navigation.navigate('CreateAccount')}}
         />
         <Button
           title={'Log in'}
