@@ -5,6 +5,7 @@ import {withNavigation} from 'react-navigation';
 
 import TopStories from '../../../screens/tabs/TopStories';
 import MsgHub from '../../../screens/tabs/MsgHub';
+import InfoSupport from '../../../screens/tabs/InfoSupport';
 
 const initialLayout = { width: Dimensions.get('window').width};
 const renderTabBar = props =>(
@@ -56,12 +57,6 @@ const HomeScreenTab = ()=> {
     />
   );
 }
-
-const InfoSupport = () => (
-  <View style={[styles.scene, { backgroundColor: 'red' }]}>
-    <Text> Information and Support </Text>
-  </View>
-);
 
 const Help = () => (
   <View style={[styles.scene, { backgroundColor: 'pink' }]}>
