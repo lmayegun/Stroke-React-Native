@@ -41,8 +41,8 @@ const HomeScreenTab = ()=> {
   ]);
 
   const renderScene = SceneMap({
-    topStories: TopStories,
     msgHub: MsgHub,
+    topStories: TopStories,
     infoSup: InfoSupport,
     help: Help,
   });

@@ -1,6 +1,6 @@
 import React from 'react';
 import {Text, Alert, Image} from 'react-native';
-import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
+import { FontAwesome, MaterialCommunityIcons, MaterialIcons, Entypo } from '@expo/vector-icons';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
@@ -35,9 +35,12 @@ const MainTabNavigator = createBottomTabNavigator(
         if (routeName === 'Home') {
             return <FontAwesome name="home" color={"grey"} size={20} />;
         } else if (routeName === 'Categories') {
-            return <Text>Categories</Text>;
+            return <MaterialIcons name="group-work" color={"grey"} size={20} />;;
+        } else if (routeName === 'Videos') {
+            return <Entypo name="folder-video" color={"grey"} size={20} />;;
+        } else if (routeName === 'Search') {
+            return <MaterialCommunityIcons name="magnify" color={"grey"} size={20} />;;
         }
-        // You can return any component that you like here!
         return <Text>Icon</Text>;
       },
     }),
