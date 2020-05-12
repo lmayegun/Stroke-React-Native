@@ -87,7 +87,7 @@ const Navigation = createStackNavigator(
         },
         title: <FontAwesome name="heartbeat" color={'#ffffff'} size={20} />,
         headerTitleAlign: 'center',
-        headerRight: ()=><MaterialCommunityIcons name="dots-vertical" color={'#ffffff'} size={20}/>
+        headerRight: ()=><MaterialCommunityIcons name="dots-vertical" color={'#ffffff'} size={20}/>,
       })
     }
   }
