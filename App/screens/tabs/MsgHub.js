@@ -21,6 +21,10 @@ const MsgHub = ( {navigation}) => {
         <Text style={styles.summary}>All you need is a free account</Text>
         <View>
         <Button
+          title={'Create Account'}
+          onPress={()=>{navigation.navigate('CreateAccount')}}
+        />
+        <Button
           title={'Log in'}
           onPress={()=>{navigation.navigate('Login')}}
         />
