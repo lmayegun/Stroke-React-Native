@@ -34,10 +34,10 @@ const renderTabBar = props =>(
 const HomeScreenTab = ()=> {
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
-    { key: 'msgHub', title: 'My MSG' },
     { key: 'topStories', title: 'Top Stories' },
     { key: 'infoSup', title: 'Info & Support' },
     { key: 'help', title: 'Help Using The App' },
+    { key: 'msgHub', title: 'My MSG' },
   ]);
 
   const renderScene = SceneMap({
