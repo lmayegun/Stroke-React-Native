@@ -1,29 +1,64 @@
 import React from 'react';
-import {View, StyleSheet, Image, Text, TouchableOpacity} from 'react-native';
+import {View, StyleSheet, ScrollView, Image, Text, TouchableOpacity} from 'react-native';
 import {withNavigation} from 'react-navigation';
 
-const ContentScreen = ({title, image, navigation})=>{
+import {ContentTitle, ContentLastUpdated} from '../components/content';
+
+const ContentScreen = (props)=>{
+
+  const items = [];
+  var i = 0;
+  for( item of Object.keys(props.content) ){
+    console.log(item)
+    switch(item){
+      case 'title':{
+        items.push(
+          <ContentTitle key={i}/>
+        )
+        break;
+      }
+      case 'updateTime':{
+        items.push(
+          <ContentLastUpdated />
+        )
+        break;
+      }
+      case 'image':{
+        items.push(
+          <TouchableOpacity
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+            }}
+            >
+              <Image
+                style={[styles.image]}
+                source={props.content.image}
+              />
+          </TouchableOpacity>
+        )
+        break;
+      }
+      default:{
+        return <Text></Text>
+      }
+    }
+    i++;
+  }
+
   return(
-    <View style={[styles.root]}>
-      <TouchableOpacity
-        style={{
-          display: 'flex',
-          flexDirection: 'row',
-        }}
-        onPress={()=>{navigation.navigate('Video')}}
-        >
-          <Image
-            style={[styles.image]}
-            source={image}
-          />
-      </TouchableOpacity>
-      <Text> Description </Text>
-    </View>
+    <ScrollView style={[styles.root]}>
+      {items}
+    </ScrollView>
   )
 }
 
 ContentScreen.defaultProps = {
-  image: require('../assets/images/west.png')
+  content:{
+    title: 'Ferrari sign Sainz to replace Vettel',
+    updateTime: 'tues 11pm',
+    image: require('../assets/images/west.png'),
+  }
 }
 
 const styles = StyleSheet.create({
@@ -33,12 +68,16 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     marginBottom: 10,
     overflow: 'hidden',
-    padding: 10
+    padding: 0
   },
   image:{
     height: 200,
     width: '100%'
+  },
+  title:{
+
   }
+
 })
 
 export default withNavigation(ContentScreen);

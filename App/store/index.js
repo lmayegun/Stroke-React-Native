@@ -8,7 +8,7 @@ const sagaMiddeleware = createSagaMiddleware()
 
 const store = createStore(
   createReducer,
-  applyMiddleware(logger, sagaMiddeleware),
+  applyMiddleware( sagaMiddeleware),
 );
 
 store.subscribe(()=>{
