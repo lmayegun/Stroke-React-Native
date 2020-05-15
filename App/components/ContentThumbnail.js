@@ -4,8 +4,11 @@ import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
 import {withNavigation} from 'react-navigation';
 
 import {colorPalette} from '../utils';
+import TagLabel from './TagLabel';
 
-const ContentThumbnail = ({title, image, posted, navigation}) => {
+const ContentThumbnail = ({content, navigation}) => {
+  const {title, thumbnail, posted, tagName} = content;
+
   return(
     <View style={[styles.root]}>
     <TouchableOpacity
@@ -17,15 +20,15 @@ const ContentThumbnail = ({title, image, posted, navigation}) => {
       onPress={()=>{navigation.navigate('Content')}}
       >
         <Image
-          source={image}
+          source={thumbnail}
           style={[styles.image]}
         />
         <View style={[styles.summary]}>
           <View style={[styles.timeAndTag]}>
-            <Text style={[styles.tag]}>Exclusive</Text>
+            <TagLabel tagName={tagName}/>
             <View style={[styles.time]}>
               <MaterialCommunityIcons name="progress-clock" color={'#ccc'} size={20} style={{marginRight: 4}} />
-              <Text>{posted}h ago</Text>
+              <Text>2h ago</Text>
             </View>
           </View>
           <Text>{title}</Text>
@@ -36,9 +39,11 @@ const ContentThumbnail = ({title, image, posted, navigation}) => {
 }
 
 ContentThumbnail.defaultProps = {
-  image: require('../assets/images/west.png'),
-  title: 'Example of content title',
-  posted: 2
+  content:{
+    image: require('../assets/images/west.png'),
+    name: 'Example of content title',
+    posted: 2
+  }
 }
 
 const styles = StyleSheet.create({

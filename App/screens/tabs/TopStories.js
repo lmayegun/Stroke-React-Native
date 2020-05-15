@@ -24,7 +24,7 @@ const TopStories = ({navigation}) => {
   if( !select ){
     return null
   }
-  // console.log(select, "mystate")
+
   return(
     <View style={[styles.scene]}>
       <FlatList
@@ -67,7 +67,7 @@ const TopStories = ({navigation}) => {
               )
             }else{
               return(
-                <ContentThumbnail title={item.name} />
+                <ContentThumbnail content={item} />
               )
             }
           }
