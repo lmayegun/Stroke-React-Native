@@ -1,7 +1,12 @@
 export const Colors = {
-    PRIMARY:'purple',
+    PRIMARY:'#5b358c',
 
-    WHITE:'#ffffff',
+    APHASIA: '#008080',
+    PHYSICAL:'#008FDA',
+    EMOTIONAL:'#006401',
+    PRACTICAL:'#800020',
+
+    WHITE:'#FFFFFF',
     LIGHTGREEN:'#BABABA',
     GREEN:'#0da935',
 

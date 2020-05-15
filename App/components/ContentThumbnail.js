@@ -3,7 +3,7 @@ import {View, Image, Text, StyleSheet, TouchableOpacity, Dimensions} from 'react
 import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
 import {withNavigation} from 'react-navigation';
 
-import {colorPalette} from '../utils';
+import {Colors} from '../utils/Colors';
 import TagLabel from './TagLabel';
 
 const ContentThumbnail = ({content, navigation}) => {
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
   root:{
     display: 'flex',
     flexDirection: 'row',
-    backgroundColor: colorPalette(),
+    backgroundColor: Colors.WHITE,
     marginTop: 10,
     padding: 10,
     justifyContent:'flex-start',
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     paddingLeft: 6,
     marginRight: 2,
     flex: 2,
-    backgroundColor: colorPalette('primary'),
+    backgroundColor: Colors.PRIMARY,
     color: 'white'
   },
   time:{

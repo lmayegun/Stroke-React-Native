@@ -1,16 +1,27 @@
 import React from 'react';
 import {View, StyleSheet, Text} from 'react-native';
 
+import {Colors} from '../utils/Colors';
+
 const TagLabel = ({tagName})=>{
 
-  let backgroundColor = 'yellow';
+  let backgroundColor = Colors.WHITE;
 
   switch (tagName) {
     case 'Exclusive':
-      backgroundColor = 'purple';
+      backgroundColor = Colors.PRIMARY;
       break;
     case 'Aphasia':
-      backgroundColor = 'blue';
+      backgroundColor = Colors.APHASIA;
+      break;
+    case 'Physical':
+      backgroundColor = Colors.PHYSICAL;
+      break;
+    case 'Emotional':
+      backgroundColor = Colors.EMOTIONAL;
+      break;
+    case 'Practical':
+      backgroundColor = Colors.PRACTICAL;
       break;
     default:
       backgroundColor = 'green';
