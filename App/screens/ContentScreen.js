@@ -1,50 +1,16 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {View, StyleSheet, ScrollView, Image, Text, TouchableOpacity} from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
 import {withNavigation} from 'react-navigation';
 
 import {ContentTitle, ContentLastUpdated} from '../components/content';
+import AppUtils from '../utils/AppUtils';
+import * as Actions from '../store/actions/contents/news.actions';
 
 const ContentScreen = ({content, navigation})=>{
   const contentId = navigation.getParam('id');
-  console.log(contentId);
-  const items = [];
-  var i = 0;
-  for( item of Object.keys(content) ){
-    switch(item){
-      case 'title':{
-        items.push(
-          <ContentTitle key={i}/>
-        )
-        break;
-      }
-      case 'updateTime':{
-        items.push(
-          <ContentLastUpdated />
-        )
-        break;
-      }
-      case 'image':{
-        items.push(
-          <TouchableOpacity
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-            }}
-            >
-              <Image
-                style={[styles.image]}
-                source={content.image}
-              />
-          </TouchableOpacity>
-        )
-        break;
-      }
-      default:{
-        return <Text></Text>
-      }
-    }
-    i++;
-  }
+
+  const items = AppUtils.contentComponents(content);
 
   return(
     <ScrollView style={[styles.root]}>
@@ -70,14 +36,6 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     padding: 0
   },
-  image:{
-    height: 200,
-    width: '100%'
-  },
-  title:{
-
-  }
-
 })
 
 export default withNavigation(ContentScreen);

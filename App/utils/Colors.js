@@ -7,6 +7,7 @@ export const Colors = {
     PRACTICAL:'#800020',
 
     WHITE:'#FFFFFF',
+    BLACK:'#000000',
     LIGHTGREEN:'#BABABA',
     GREEN:'#0da935',
 

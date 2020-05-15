@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import { View, StyleSheet, Dimensions, FlatList, Text} from 'react-native';
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 import { useDispatch, useSelector } from 'react-redux';
@@ -14,7 +14,7 @@ const TopStories = ({navigation}) => {
   const select = useSelector( ({news}) => news.newsState );
 
   useEffect(()=>{
-    dispatch(Actions.getNewsContent({productId: "Get me mac miller"}));
+    dispatch(Actions.getNewsContent());
   },[dispatch])
 
   useEffect(()=>{
