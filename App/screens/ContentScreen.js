@@ -4,12 +4,12 @@ import {withNavigation} from 'react-navigation';
 
 import {ContentTitle, ContentLastUpdated} from '../components/content';
 
-const ContentScreen = (props)=>{
-
+const ContentScreen = ({content, navigation})=>{
+  const contentId = navigation.getParam('id');
+  console.log(contentId);
   const items = [];
   var i = 0;
-  for( item of Object.keys(props.content) ){
-    console.log(item)
+  for( item of Object.keys(content) ){
     switch(item){
       case 'title':{
         items.push(
@@ -33,7 +33,7 @@ const ContentScreen = (props)=>{
             >
               <Image
                 style={[styles.image]}
-                source={props.content.image}
+                source={content.image}
               />
           </TouchableOpacity>
         )

@@ -7,7 +7,7 @@ import {Colors} from '../utils/Colors';
 import TagLabel from './TagLabel';
 
 const ContentThumbnail = ({content, navigation}) => {
-  const {title, thumbnail, posted, tagName} = content;
+  const {id, title, thumbnail, posted, tagName} = content;
 
   return(
     <View style={[styles.root]}>
@@ -17,7 +17,7 @@ const ContentThumbnail = ({content, navigation}) => {
         flexDirection: 'row',
         flex: 1
       }}
-      onPress={()=>{navigation.navigate('Content')}}
+      onPress={()=>{navigation.navigate('Content', {id:id} )}}
       >
         <Image
           source={thumbnail}
