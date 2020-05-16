@@ -1,7 +1,21 @@
-import { put, takeLatest } from 'redux-saga/effects';
+import { put, takeLatest, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 
-function* getContentNews(payload){
+function* getContent(payload){
+  try{
+    const request = yield axios.get('/api/e-commerce-app/product', {
+                                        params:payload.payload
+                                      })
+                                      .then((response) => {
+                                        return response.data
+                                      });
+    yield put({ type: 'GET_CONTENT_SUCCESS', payload:request });
+  } catch (error){
+    yield put({ type: 'GET_CONTENT_SUCCESS', payload:'failed' });
+  }
+}
+
+function* getContentNews(){
   try{
     const request = yield axios.get('/api/e-commerce-app/products').then((response) => {
         return response.data
@@ -15,4 +29,5 @@ function* getContentNews(payload){
 
 export const contentsSagas = [
   takeLatest('GET_ALL_NEWS', getContentNews),
+  takeLatest('GET_CONTENT', getContent),
 ]

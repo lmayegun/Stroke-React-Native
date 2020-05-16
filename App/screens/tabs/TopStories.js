@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import { View, StyleSheet, Dimensions, FlatList, Text} from 'react-native';
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 import { useDispatch, useSelector } from 'react-redux';
@@ -11,24 +11,25 @@ const { width } = Dimensions.get('window');
 
 const TopStories = ({navigation}) => {
   const dispatch = useDispatch();
-  const select = useSelector( ({news}) => news.newsState );
+  const contentsData = useSelector( ({news}) => news.newsState );
+  const [contents, setContents] = useState(null)
 
   useEffect(()=>{
     dispatch(Actions.getNewsContent());
   },[dispatch])
 
   useEffect(()=>{
+    setContents(contentsData)
+  },[contentsData])
 
-  },[select])
-
-  if( !select ){
+  if( !contents ){
     return null
   }
 
   return(
     <View style={[styles.scene]}>
       <FlatList
-        data={select}
+        data={contents}
         keyExtractor={(item)=> item.id}
         renderItem={({item, index})=>{
             if( index == 0){
@@ -39,7 +40,7 @@ const TopStories = ({navigation}) => {
               return(
                 <View style={{height:150, justifyContent:'center', color:'white', backgroundColor:'red', marginTop:10}}>
                   <FlatList
-                    data={select}
+                    data={contents}
                     horizontal={true}
                     keyExtractor={(item)=> item.id}
                     renderItem={(item)=>{
@@ -54,7 +55,7 @@ const TopStories = ({navigation}) => {
               return(
                 <View style={{height:150, justifyContent:'center', color:'white', backgroundColor:'red', marginTop:10}}>
                   <FlatList
-                    data={select}
+                    data={contents}
                     horizontal={true}
                     keyExtractor={(item)=> item.id}
                     renderItem={(item)=>{

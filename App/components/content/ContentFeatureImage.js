@@ -20,7 +20,7 @@ const ContentFeatureImage = ({image})=>{
 const styles = StyleSheet.create({
   image:{
     height: 200,
-    width: '100%'
+    width: '100%',
   },
 });
 

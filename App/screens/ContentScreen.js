@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {View, StyleSheet, ScrollView, Image, Text, TouchableOpacity} from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import {withNavigation} from 'react-navigation';
@@ -7,8 +7,23 @@ import {ContentTitle, ContentLastUpdated} from '../components/content';
 import AppUtils from '../utils/AppUtils';
 import * as Actions from '../store/actions/contents/news.actions';
 
-const ContentScreen = ({content, navigation})=>{
+const ContentScreen = ({navigation})=>{
   const contentId = navigation.getParam('id');
+  const dispatch = useDispatch();
+  const contentData = useSelector( ({content}) => content.contentState );
+  const [content, setContent] = useState(null);
+
+  useEffect(()=>{
+    dispatch(Actions.getContent({productId:contentId}));
+  },[dispatch])
+
+  useEffect(()=>{
+    setContent(contentData);
+  },[contentData])
+
+  if(!content){
+    return null;
+  }
 
   const items = AppUtils.contentComponents(content);
 
@@ -17,14 +32,6 @@ const ContentScreen = ({content, navigation})=>{
       {items}
     </ScrollView>
   )
-}
-
-ContentScreen.defaultProps = {
-  content:{
-    title: 'Ferrari sign Sainz to replace Vettel',
-    updateTime: 'tues 11pm',
-    image: require('../assets/images/west.png'),
-  }
 }
 
 const styles = StyleSheet.create({

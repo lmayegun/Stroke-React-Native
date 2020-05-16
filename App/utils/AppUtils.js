@@ -4,9 +4,11 @@ import {ContentTitle, ContentLastUpdated, ContentFeatureImage} from '../componen
 class AppUtils {
 
   static contentComponents(content){
+    // console.log(content)
     const items = [];
     var i = 0;
     for( item of Object.keys(content) ){
+      // console.log(item)
       switch(item){
         case 'title':{
           items.push(
@@ -16,18 +18,20 @@ class AppUtils {
         }
         case 'updateTime':{
           items.push(
-            <ContentLastUpdated />
+            <ContentLastUpdated key={i}/>
           )
           break;
         }
-        case 'image':{
+        case 'thumbnail':{
           items.push(
-            <ContentFeatureImage image={content.image} />
+            <ContentFeatureImage key={i} image={content.thumbnail}/>
           )
           break;
         }
         default:{
-          return null
+          items.push(
+            null
+          )
         }
       }
       i++;
