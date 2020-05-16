@@ -34,7 +34,7 @@ const TopStories = ({navigation}) => {
         renderItem={({item, index})=>{
             if( index == 0){
               return(
-                <FullWidthThumb />
+                <FullWidthThumb content={item} />
               )
             }else if( index == 4){
               return(

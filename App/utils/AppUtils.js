@@ -24,7 +24,7 @@ class AppUtils {
         }
         case 'thumbnail':{
           items.push(
-            <ContentFeatureImage key={i} image={content.thumbnail}/>
+            <ContentFeatureImage key={i} image={content.body.thumbnail}/>
           )
           break;
         }

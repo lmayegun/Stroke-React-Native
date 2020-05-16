@@ -3,11 +3,12 @@ import {View, Image, Text, StyleSheet, TouchableOpacity, Dimensions} from 'react
 import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
 import {withNavigation} from 'react-navigation';
 
-const FullWidthThumb = ({image})=>{
+const FullWidthThumb = ({content, navigation})=>{
+  const {title, thumbnail } = content.body;
   return(
     <View style={[styles.container]}>
       <Image
-        source={image}
+        source={thumbnail}
         style={[styles.image]}
         resizeMode="cover"
       />
@@ -18,7 +19,7 @@ const FullWidthThumb = ({image})=>{
           <Text style={[styles.time]}> Full width Thumbs</Text>
         </View>
         <View>
-          <Text style={[styles.summary]}>No pro sport in England until June 1, says government</Text>
+          <Text style={[styles.summary]}>{title}</Text>
         </View>
       </View>
     </View>
@@ -46,7 +47,7 @@ const styles = StyleSheet.create({
   summaryWrapper:{
     display: 'flex',
     flexDirection: 'column',
-    flex: 2,
+    flex: 2.5,
     backgroundColor: 'yellow',
     padding:10,
   },
@@ -71,7 +72,7 @@ const styles = StyleSheet.create({
   },
   videoIcon:{
     position: 'absolute',
-    top: 170,
+    top: 160,
     left: 5,
 
   }

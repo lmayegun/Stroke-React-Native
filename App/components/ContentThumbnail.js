@@ -7,7 +7,8 @@ import {Colors} from '../utils/Colors';
 import TagLabel from './TagLabel';
 
 const ContentThumbnail = ({content, navigation}) => {
-  const {id, title, thumbnail, posted, tagName} = content;
+  const {id, posted, tagName} = content;
+  const { title, thumbnail } = content.body;
 
   return(
     <View style={[styles.root]}>
