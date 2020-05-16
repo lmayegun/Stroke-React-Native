@@ -7,12 +7,12 @@ class AppUtils {
     // console.log(content)
     const items = [];
     var i = 0;
-    for( item of Object.keys(content) ){
-      // console.log(item)
+    for( item of Object.keys(content.body) ){
+
       switch(item){
         case 'title':{
           items.push(
-            <ContentTitle key={i}/>
+            <ContentTitle key={i} title={content.body.title}/>
           )
           break;
         }
@@ -36,6 +36,8 @@ class AppUtils {
       }
       i++;
     }
+
+    console.log(i)
 
     return items;
   }
