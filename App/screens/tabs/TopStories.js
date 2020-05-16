@@ -4,7 +4,8 @@ import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 import { useDispatch, useSelector } from 'react-redux';
 import {withNavigation} from 'react-navigation';
 
-import {ContentThumbnail, FullWidthThumb} from '../../components';
+import {ContentThumbnail, FullWidthThumb, VideoThumb} from '../../components';
+import {Colors} from '../../utils/Colors';
 import * as Actions from '../../store/actions/contents/news.actions';
 
 const { width } = Dimensions.get('window');
@@ -36,16 +37,17 @@ const TopStories = ({navigation}) => {
               return(
                 <FullWidthThumb content={item} />
               )
-            }else if( index == 4){
+            }else if( index == 5){
               return(
-                <View style={{height:150, justifyContent:'center', color:'white', backgroundColor:'red', marginTop:10}}>
+                <View style={{height:150, backgroundColor:Colors.PHYSICAL, marginTop:10, padding:10, }}>
+                  <Text style={{ color:'white', marginBottom: 10, fontSize:16}}>EXERCISE VIDEOS</Text>
                   <FlatList
                     data={contents}
                     horizontal={true}
                     keyExtractor={(item)=> item.id}
                     renderItem={(item)=>{
                       return(
-                        <Text> Sample text </Text>
+                        <VideoThumb />
                       )
                     }}
                     />
@@ -53,14 +55,15 @@ const TopStories = ({navigation}) => {
               )
             }else if( index == 10){
               return(
-                <View style={{height:150, justifyContent:'center', color:'white', backgroundColor:'red', marginTop:10}}>
+                <View style={{height:150, backgroundColor:Colors.PRACTICAL, marginTop:10, padding:10, }}>
+                  <Text style={{ color:'white', marginBottom: 10, fontSize:16}}>PRACTICAL VIDEOS</Text>
                   <FlatList
                     data={contents}
                     horizontal={true}
                     keyExtractor={(item)=> item.id}
                     renderItem={(item)=>{
                       return(
-                        <Text> Sample text </Text>
+                        <VideoThumb />
                       )
                     }}
                     />
