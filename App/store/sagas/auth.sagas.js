@@ -19,7 +19,7 @@ function* initLogin({payload}){
       alert('yeah we are in')
     })
     yield put({
-                type:'ONE_TIME_PASS_LOGIN_SUCCESS', 
+                type:'ONE_TIME_PASS_LOGIN_SUCCESS',
                 payload:{ auth:true, number, code }
               });
   }catch(e){
@@ -27,7 +27,12 @@ function* initLogin({payload}){
   }
 }
 
+function* initCreateAccount({payload}){
+  alert("Creating account");
+}
+
 
 export const authSagas=[
-  takeLatest('ONE_TIME_PASS_LOGIN', initLogin)
+  takeLatest('ONE_TIME_PASS_LOGIN', initLogin),
+  takeLatest('ONE_TIME_PASS_ACC', initCreateAccount)
 ]
