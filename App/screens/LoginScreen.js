@@ -1,51 +1,47 @@
-import React, { Component } from 'react';
-import { View, Text, TextInput } from 'react-native';
-import { FormLabel, FormInput, Button } from 'react-native-elements';
+import React, { useState, Component } from 'react';
+import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import {useDispatch} from 'react-redux';
 import axios from 'axios';
 import firebase from 'firebase';
 
-const ROOT_URL = 'https://us-central1-one-time-password-ff413.cloudfunctions.net';
+import * as Actions from '../store/actions/auth/auth.actions';
 
-class LoginScreen extends Component {
+const LoginScreen = ()=>{
+  const dispatch = useDispatch();
+  const [phone, setPhone] = useState('');
+  const [code, setCode] = useState('');
 
-
-  state = { phone: '', code: '' };
-
-  handleSubmit = async () => {
-    try {
-      let { data } = await axios.post(`${ROOT_URL}/verifyOneTimePassword`, {
-        phone: this.state.phone, code: this.state.code
-      });
-
-      firebase.auth().signInWithCustomToken(data.token);
-    } catch (err) {
-      console.log(err);
-    }
+  function handleSubmit(){
+    dispatch(Actions.login({phone, code}))
   }
 
-  render() {
-    return (
-      <View>
-        <View style={{ marginBottom: 10 }}>
-          <Text>Enter Phone Number</Text>
-          <TextInput
-            value={this.state.phone}
-            onChangeText={phone => this.setState({ phone })}
-          />
-        </View>
-
-        <View style={{ marginBottom: 10 }}>
-          <Text>Enter Code</Text>
-          <TextInput
-            value={this.state.code}
-            onChangeText={code => this.setState({ code })}
-          />
-        </View>
-
-        <Button onPress={this.handleSubmit} title="Submit" />
+  return(
+    <View style={[style.container]}>
+      <View style={{ marginBottom: 10 }}>
+        <Text>Enter Phone Number</Text>
+        <TextInput
+          value={phone}
+          onChangeText={phone => setPhone({ phone })}
+        />
       </View>
-    );
-  }
+
+      <View style={{ marginBottom: 10 }}>
+        <Text>Enter Code</Text>
+        <TextInput
+          value={code}
+          onChangeText={code => setCode({ code })}
+        />
+      </View>
+
+      <Button onPress={handleSubmit} title="Submit" />
+    </View>
+  )
 }
+
+const style = StyleSheet.create({
+  container:{
+    padding:20
+  }
+})
 
 export default LoginScreen;

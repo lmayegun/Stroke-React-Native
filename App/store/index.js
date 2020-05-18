@@ -8,11 +8,11 @@ const sagaMiddeleware = createSagaMiddleware()
 
 const store = createStore(
   createReducer,
-  applyMiddleware( sagaMiddeleware),
+  applyMiddleware(logger, sagaMiddeleware),
 );
 
 store.subscribe(()=>{
-  // console.log(store.getState(), 'hh')
+  // console.log(store.getState())
 })
 
 sagaMiddeleware.run(APPsagas);
