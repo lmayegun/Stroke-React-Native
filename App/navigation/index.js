@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, Alert, Image} from 'react-native';
+import { View, Text, Alert, Image} from 'react-native';
 import { FontAwesome, MaterialCommunityIcons, MaterialIcons, Entypo } from '@expo/vector-icons';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
@@ -9,7 +9,8 @@ import {
         VideoPlayerScreen,
         ContentScreen,
         CreateAccountScreen,
-        LoginScreen
+        LoginScreen,
+        CategoryScreen
 }from '../screens';
 
 import {
@@ -74,7 +75,10 @@ const Navigation = createStackNavigator(
     },
     Login:{
       screen: LoginScreen
-    }
+    },
+    Category:{
+      screen: CategoryScreen
+    },
   },
   {
     initialRouteName: 'MainTab',
@@ -85,7 +89,7 @@ const Navigation = createStackNavigator(
           height: 80,
           backgroundColor: 'purple',
         },
-        title: <FontAwesome name="heartbeat" color={'#ffffff'} size={20} />,
+        title: <ScreenTitle nav={navigation}/>,
         headerTitleAlign: 'center',
         headerRight: ()=><MaterialCommunityIcons name="dots-vertical" color={'#ffffff'} size={20}/>,
       })
@@ -93,6 +97,15 @@ const Navigation = createStackNavigator(
   }
 );
 
-Navigation
+const ScreenTitle = ({nav})=>{
+  const {name} = nav.state.params ? nav.state.params : '';
+  console.log(name)
+  return(
+    <>
+    {/*<FontAwesome name="heartbeat" color={'#ffffff'} size={20} />*/}
+    <Text style={{color:'white'}}> MSG {name}</Text>
+    </>
+  )
+}
 
 export default createAppContainer(Navigation);

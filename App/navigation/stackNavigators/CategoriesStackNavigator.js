@@ -1,72 +1,97 @@
 import React, { Component, useState } from "react";
 import {
-  Alert,
-  Modal,
   StyleSheet,
   Text,
-  TouchableHighlight,
+  TouchableOpacity,
   View,
-  ScrollView,
   ImageBackground,
+  FlatList,
 } from "react-native";
+import {withNavigation} from 'react-navigation';
 
-const image = require('../../assets/images/west.png');
+const categories = [
+  {
+    title: 'Aphasia',
+    bgImg: require('../../assets/images/contents/thumbnail/purple-gradient.jpg'),
+    link:'aphasia'
+  },
+  {
+    title: 'Emotion',
+    bgImg: require('../../assets/images/contents/thumbnail/purple-gradient.jpg'),
+    link: 'emotion'
+  },
+  {
+    title: 'Physical',
+    bgImg: require('../../assets/images/contents/thumbnail/purple-gradient.jpg'),
+    link: 'exercise'
+  },
+  {
+    title: 'Practical',
+    bgImg: require('../../assets/images/contents/thumbnail/purple-gradient.jpg'),
+    link: 'exercise'
+  },
+  {
+    title: 'Covid 19',
+    bgImg: require('../../assets/images/contents/thumbnail/purple-gradient.jpg'),
+    link: 'exercise'
+  },
+  {
+    title: 'Survivors',
+    bgImg: require('../../assets/images/contents/thumbnail/purple-gradient.jpg'),
+    link: 'exercise'
+  }
+]
 
-const AdviceAndInfo = () => {
+const Categories = ({navigation}) => {
   return (
-    <ScrollView>
       <View style={styles.container}>
-        <ImageBackground source={image} style={styles.image}>
-          <Text> Text </Text>
-        </ImageBackground>
-        <ImageBackground source={image} style={styles.image}>
-          <Text> Text </Text>
-        </ImageBackground>
+      <FlatList
+        data={categories}
+        vertical={true}
+        numColumns={2}
+        keyExtractor={(item)=> item.title}
+        renderItem={(item)=>{
+          const { title, bgImg, link } = item.item
+          return(
+            <TouchableOpacity
+              style={styles.link}
+              onPress={()=>{navigation.navigate('Category', {name:title})}}
+            >
+              <ImageBackground source={bgImg} style={styles.image}>
+                <Text style={styles.title}> {title} </Text>
+              </ImageBackground>
+            </TouchableOpacity>
+          )
+        }}
+        />
       </View>
-      <View style={styles.container}>
-        <ImageBackground source={image} style={styles.image}>
-          <Text> Text </Text>
-        </ImageBackground>
-        <ImageBackground source={image} style={styles.image}>
-          <Text> Text </Text>
-        </ImageBackground>
-      </View>
-      <View style={styles.container}>
-        <ImageBackground source={image} style={styles.image}>
-          <Text> Text </Text>
-        </ImageBackground>
-        <ImageBackground source={image} style={styles.image}>
-          <Text> Text </Text>
-        </ImageBackground>
-      </View>
-      <View style={styles.container}>
-        <ImageBackground source={image} style={styles.image}>
-          <Text> Text </Text>
-        </ImageBackground>
-        <ImageBackground source={image} style={styles.image}>
-          <Text> Text </Text>
-        </ImageBackground>
-      </View>
-    </ScrollView>
   )
 }
 
 const styles = StyleSheet.create({
   container:{
-    display: 'flex',
+    padding: 10,
+  },
+  link:{
+    flex:1,
     flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: "space-between",
-    padding: 0,
+    marginRight: 10
   },
   image: {
-    flexGrow: 2,
     resizeMode: "cover",
-    height: 150,
+    height: 180,
     margin: 8,
-
-
+    alignItems:'center',
+    width: 100+'%',
   },
+  title:{
+    fontSize:24,
+    fontWeight:"900",
+    color:'white',
+    position:'absolute',
+    bottom:10
+  }
+
 });
 
-export default AdviceAndInfo;
+export default withNavigation(Categories);
