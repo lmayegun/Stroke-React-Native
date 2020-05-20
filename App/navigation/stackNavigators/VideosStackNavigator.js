@@ -1,15 +1,15 @@
-import React from 'react';
-import {View, Button} from 'react-native';
+import { createStackNavigator } from 'react-navigation-stack';
+import VideoScreenTab from './tabs/VideoScreenTab';
 
-function VideosStackNavigator({ navigation }) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Button
-        title="Go to Search"
-        onPress={() => navigation.navigate('Edit')}
-      />
-    </View>
-  );
-}
+const VideosStackNavigator = createStackNavigator(
+  {
+    Video: VideoScreenTab,
+  },
+  {
+    defaultNavigationOptions: ({ navigation }) => ({
+      headerShown: false
+    }),
+  }
+);
 
 export default VideosStackNavigator;

@@ -3,9 +3,9 @@ import { View, StyleSheet, Dimensions, Button, Text, TextInput, CheckBox, Picker
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 import {withNavigation} from 'react-navigation';
 
-import TopStories from '../../../screens/tabs/home/TopStories';
-import MsgHub from '../../../screens/tabs/home/MsgHub';
-import InfoSupport from '../../../screens/tabs/home/InfoSupport';
+import Aphasia from '../../../screens/tabs/videos/Aphasia';
+import MsgHub from '../../../screens/tabs/videos/MsgHub';
+import InfoSupport from '../../../screens/tabs/videos/InfoSupport';
 
 const initialLayout = { width: Dimensions.get('window').width};
 const renderTabBar = props =>(
@@ -31,18 +31,18 @@ const renderTabBar = props =>(
   />
 )
 
-const HomeScreenTab = ()=> {
+const VideoScreenTab = ()=> {
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
-    { key: 'topStories', title: 'Top Stories' },
-    { key: 'infoSup', title: 'Info & Support' },
-    { key: 'help', title: 'Help Using The App' },
-    { key: 'msgHub', title: 'My MSG' },
+    { key: 'aphasia', title: 'Aphasia' },
+    { key: 'infoSup', title: 'Physical' },
+    { key: 'help', title: 'Emotion' },
+    { key: 'msgHub', title: 'Practical' },
   ]);
 
   const renderScene = SceneMap({
     msgHub: MsgHub,
-    topStories: TopStories,
+    aphasia: Aphasia,
     infoSup: InfoSupport,
     help: Help,
   });
@@ -65,7 +65,7 @@ const Help = () => (
 );
 
 
-export default HomeScreenTab
+export default VideoScreenTab
 
 const styles = StyleSheet.create({
   scene: {

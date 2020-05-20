@@ -3,7 +3,7 @@ import { View, StyleSheet, Button, Text, ImageBackground, Dimensions } from 'rea
 import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
 import {withNavigation} from 'react-navigation';
 
-import {colorPalette} from '../../utils';
+import {colorPalette} from '../../../utils';
 
 const image = { uri: "https://i.pinimg.com/originals/11/c0/0c/11c00c702d268a5a7789e801f995fbcc.gif" };
 

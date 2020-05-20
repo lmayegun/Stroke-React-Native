@@ -4,9 +4,9 @@ import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 import { useDispatch, useSelector } from 'react-redux';
 import {withNavigation} from 'react-navigation';
 
-import {ContentThumbnail, FullWidthThumb, VideoThumb} from '../../components';
-import {Colors} from '../../utils/Colors';
-import * as Actions from '../../store/actions/contents/news.actions';
+import {ContentThumbnail, FullWidthThumb, VideoThumb} from '../../../components';
+import {Colors} from '../../../utils/Colors';
+import * as Actions from '../../../store/actions/contents/news.actions';
 
 const { width } = Dimensions.get('window');
 

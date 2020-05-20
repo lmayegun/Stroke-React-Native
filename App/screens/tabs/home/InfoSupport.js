@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { StyleSheet, View, ScrollView} from 'react-native';
-import Accordian from '../../components/Accordian'
-import { Colors } from '../../utils/Colors';
+import Accordian from '../../../components/Accordian'
+import { Colors } from '../../../utils/Colors';
 
 export default class InfoSupport extends Component {
 
