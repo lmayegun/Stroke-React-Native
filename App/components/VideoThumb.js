@@ -1,12 +1,22 @@
 import React from 'react';
-import {View, Text, StyleSheet, TouchOpacity} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity, ImageBackground} from 'react-native';
+import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
+import {withNavigation} from 'react-navigation';
 
-const VideoThumb = ()=>{
+const VideoThumb = ({navigation, container, videoWrapper, description})=>{
   return(
-    <View style={[styles.container]}>
-      <View style={[styles.videoWrapper]}>
-        <Text> Video </Text>
-      </View>
+    <View style={[styles.container, container]}>
+      <TouchableOpacity
+        onPress={()=>{navigation.navigate('VideoPlayer')}}
+        >
+        <ImageBackground
+          source={require('../assets/images/frank-ocean.jpg')}
+          style={[styles.videoWrapper, videoWrapper]}>
+          <FontAwesome name="play-circle" color={'#fff'} size={30} style={[styles.videoIcon]} />
+          <Text > Video </Text>
+        </ImageBackground>
+      </TouchableOpacity>
+      <Text style={[description]}>To watch a video, click on the video and it.</Text>
     </View>
   )
 }
@@ -16,11 +26,13 @@ const styles = StyleSheet.create({
 
   },
   videoWrapper:{
-    backgroundColor: 'yellow',
-    width:150,
-    height: 100+'%',
-    marginRight: 10
+
+  },
+  videoIcon:{
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
   }
 })
 
-export default VideoThumb;
+export default withNavigation(VideoThumb);

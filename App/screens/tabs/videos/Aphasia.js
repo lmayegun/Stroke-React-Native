@@ -30,11 +30,28 @@ const Aphasia = ({navigation}) => {
   return(
     <View style={[styles.scene]}>
       <FlatList
+        vertical={true}
         data={contents}
         keyExtractor={(item)=> item.id}
         renderItem={({item, index})=>{
           return(
-            <FullWidthThumb content={item} />
+            <VideoThumb
+              container={{
+                width:100+'%',
+                marginRight: 20,
+                height: 250,
+                marginBottom:10,
+                backgroundColor:'white'
+              }}
+              videoWrapper={{
+                width: 100+'%',
+                height: 220,
+                marginBottom: 5
+              }}
+              description={{
+                color:'black',
+              }}
+            />
           )
         }}
       />
@@ -46,6 +63,7 @@ const styles = StyleSheet.create({
   scene: {
     flex: 1,
     width: width,
+    paddingTop: 10,
     backgroundColor: '#f0f0f0',
   },
 });

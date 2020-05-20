@@ -67,7 +67,7 @@ const Navigation = createStackNavigator(
     Content: {
       screen: ContentScreen,
     },
-    Video:{
+    VideoPlayer:{
       screen:VideoPlayerScreen
     },
     CreateAccount: {

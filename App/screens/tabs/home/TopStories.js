@@ -39,7 +39,7 @@ const TopStories = ({navigation}) => {
               )
             }else if( index == 5){
               return(
-                <View style={{height:150, backgroundColor:Colors.PHYSICAL, marginTop:10, padding:10, }}>
+                <View style={{height:220, backgroundColor:Colors.PHYSICAL, marginTop:10, padding:10, }}>
                   <Text style={{ color:'white', marginBottom: 10, fontSize:16}}>EXERCISE VIDEOS</Text>
                   <FlatList
                     data={contents}
@@ -47,7 +47,22 @@ const TopStories = ({navigation}) => {
                     keyExtractor={(item)=> item.id}
                     renderItem={(item)=>{
                       return(
-                        <VideoThumb />
+                        <VideoThumb
+                          container={{
+                            display:'flex',
+                            width:200,
+                            marginRight: 20,
+                          }}
+                          videoWrapper={{
+                            backgroundColor: 'yellow',
+                            width: 100+'%',
+                            height: 120,
+                            marginBottom: 5
+                          }}
+                          description={{
+                            color:'white'
+                          }}
+                        />
                       )
                     }}
                     />
@@ -55,7 +70,7 @@ const TopStories = ({navigation}) => {
               )
             }else if( index == 10){
               return(
-                <View style={{height:150, backgroundColor:Colors.PRACTICAL, marginTop:10, padding:10, }}>
+                <View style={{height:220, backgroundColor:Colors.PRACTICAL, marginTop:10, padding:10, }}>
                   <Text style={{ color:'white', marginBottom: 10, fontSize:16}}>PRACTICAL VIDEOS</Text>
                   <FlatList
                     data={contents}
