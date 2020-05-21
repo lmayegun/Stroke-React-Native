@@ -78,7 +78,22 @@ const TopStories = ({navigation}) => {
                     keyExtractor={(item)=> item.id}
                     renderItem={(item)=>{
                       return(
-                        <VideoThumb />
+                        <VideoThumb
+                          container={{
+                            display:'flex',
+                            width:200,
+                            marginRight: 20,
+                          }}
+                          videoWrapper={{
+                            backgroundColor: 'yellow',
+                            width: 100+'%',
+                            height: 120,
+                            marginBottom: 5
+                          }}
+                          description={{
+                            color:'white'
+                          }}
+                        />
                       )
                     }}
                     />

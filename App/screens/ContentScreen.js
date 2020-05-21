@@ -8,7 +8,7 @@ import AppUtils from '../utils/AppUtils';
 import * as Actions from '../store/actions/contents/news.actions';
 
 const ContentScreen = ({navigation})=>{
-   const [modalVisible, setModalVisible] = useState(true);
+  const [modalVisible, setModalVisible] = useState(true);
   const contentId = navigation.getParam('id');
   const dispatch = useDispatch();
   const contentData = useSelector( ({content}) => content.contentState );
@@ -21,6 +21,12 @@ const ContentScreen = ({navigation})=>{
   useEffect(()=>{
     setContent(contentData);
   },[contentData])
+
+  useEffect(()=>{
+    return () => {
+      dispatch(Actions.cleanContent())
+   }
+  },[])
 
   if(!content){
     return null;

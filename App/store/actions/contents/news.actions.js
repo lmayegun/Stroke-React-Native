@@ -10,3 +10,9 @@ export function getContent( payload ){
     payload
   }
 }
+
+export function cleanContent(){
+  return {
+    type: 'CLEAN_CONTENT',
+  }
+}

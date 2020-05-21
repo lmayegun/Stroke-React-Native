@@ -4,7 +4,7 @@ import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
 import {withNavigation} from 'react-navigation';
 
 const FullWidthThumb = ({content, navigation})=>{
-  const {title, thumbnail } = content.body;
+  const {title, thumbnail } = content;
   return(
     <View style={[styles.container]}>
       <Image

@@ -7,8 +7,7 @@ import {Colors} from '../utils/Colors';
 import TagLabel from './TagLabel';
 
 const ContentThumbnail = ({content, navigation}) => {
-  const {id, posted, tagName} = content;
-  const { title, thumbnail } = content.body;
+  const {id, posted, tagName, title, thumbnail} = content;
 
   return(
     <View style={[styles.root]}>
@@ -41,9 +40,11 @@ const ContentThumbnail = ({content, navigation}) => {
 
 ContentThumbnail.defaultProps = {
   content:{
-    image: require('../assets/images/west.png'),
-    name: 'Example of content title',
-    posted: 2
+    body:{
+      thumbnail: require('../assets/images/west.png'),
+      title: 'Example of content title',
+      posted: 2
+    }
   }
 }
 

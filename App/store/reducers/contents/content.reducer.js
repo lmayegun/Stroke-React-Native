@@ -9,6 +9,12 @@ const content = function( state = initialState, action ){
         contentState: action.payload
       }
     }
+    case 'CLEAN_CONTENT':
+    {
+      return{
+        contentState: null
+      }
+    }
     default:
     {
       return state;

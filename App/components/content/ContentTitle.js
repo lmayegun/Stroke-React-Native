@@ -12,7 +12,7 @@ const ContentTitle = ({title}) => {
 }
 
 ContentTitle.defaultProps = {
-  title: "Never look too far ahead of yourself",
+  title: "Title",
 }
 
 const styles = StyleSheet.create({
@@ -20,8 +20,9 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     backgroundColor: colorPalette(),
-    marginBottom: 10,
-    padding: 10,
+    marginBottom: 5,
+    paddingLeft: 10,
+    paddingRight: 10,
     justifyContent:'flex-start',
   },
   title:{

@@ -4,8 +4,9 @@ import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 import {withNavigation} from 'react-navigation';
 
 import Aphasia from '../../../screens/tabs/videos/Aphasia';
-import MsgHub from '../../../screens/tabs/videos/MsgHub';
-import InfoSupport from '../../../screens/tabs/videos/InfoSupport';
+import Practical from '../../../screens/tabs/videos/Practical';
+import Emotion from '../../../screens/tabs/videos/Emotion';
+import Physical from '../../../screens/tabs/videos/Physical';
 
 const initialLayout = { width: Dimensions.get('window').width};
 const renderTabBar = props =>(
@@ -35,16 +36,16 @@ const VideoScreenTab = ()=> {
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
     { key: 'aphasia', title: 'Aphasia' },
-    { key: 'infoSup', title: 'Physical' },
-    { key: 'help', title: 'Emotion' },
-    { key: 'msgHub', title: 'Practical' },
+    { key: 'physical', title: 'Physical' },
+    { key: 'emotion', title: 'Emotion' },
+    { key: 'practical', title: 'Practical' },
   ]);
 
   const renderScene = SceneMap({
-    msgHub: MsgHub,
     aphasia: Aphasia,
-    infoSup: InfoSupport,
-    help: Help,
+    practical: Practical,
+    physical: Physical,
+    emotion: Emotion,
   });
 
   return (
