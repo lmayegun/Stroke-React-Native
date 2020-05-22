@@ -3,9 +3,7 @@ import { View, TouchableOpacity, Text, FlatList, StyleSheet, LayoutAnimation, Pl
 import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
 import { Colors } from '../utils/Colors';
 
-
 export default class Accordian extends Component{
-
     constructor(props) {
         super(props);
         this.state = {
@@ -20,15 +18,19 @@ export default class Accordian extends Component{
 
   render() {
     const items = [];
+    let i = 0;
     for(item of this.state.data) {
       items.push(
         <View>
             <TouchableOpacity style={[styles.childRow, styles.button, item.value ? styles.btnActive : styles.btnInActive]}>
                 <Text style={[styles.font, styles.itemInActive]} >{item.key}</Text>
+                <Text style={[styles.font, styles.itemInActive]} > </Text>
+                <Text style={[styles.font, styles.itemInActive]} >{item.key}</Text>
             </TouchableOpacity>
             <View style={styles.childHr}/>
         </View>
       )
+      i++;
     }
     return (
        <View>
@@ -67,10 +69,11 @@ const styles = StyleSheet.create({
     },
     button:{
         width:'100%',
-        height:54,
         alignItems:'center',
-        paddingLeft:35,
-        paddingRight:35,
+        paddingTop:15,
+        paddingBottom:15,
+        paddingLeft:15,
+        paddingRight:15,
         fontSize: 12,
     },
     title:{
@@ -83,7 +86,7 @@ const styles = StyleSheet.create({
         color: Colors.GREEN,
     },
     itemInActive:{
-        fontSize: 12,
+        fontSize: 16,
         color: Colors.DARKGRAY,
     },
     btnActive:{
@@ -102,7 +105,7 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.CGRAY,
     },
     childRow:{
-        flexDirection: 'row',
+        flexDirection: 'column',
         justifyContent:'space-between',
         backgroundColor: Colors.GRAY,
     },

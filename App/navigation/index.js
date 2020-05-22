@@ -99,7 +99,6 @@ const Navigation = createStackNavigator(
 
 const ScreenTitle = ({nav})=>{
   const {name} = nav.state.params ? nav.state.params : '';
-  console.log(name)
   return(
     <>
     {/*<FontAwesome name="heartbeat" color={'#ffffff'} size={20} />*/}

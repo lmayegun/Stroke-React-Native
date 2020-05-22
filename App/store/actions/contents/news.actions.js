@@ -16,3 +16,9 @@ export function cleanContent(){
     type: 'CLEAN_CONTENT',
   }
 }
+
+export function getAllVideos(){
+  return {
+    type: 'GET_ALL_VIDEOS'
+  }
+}

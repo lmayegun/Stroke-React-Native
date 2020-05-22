@@ -10,15 +10,22 @@ export default class InfoSupport extends Component {
     this.state = {
       menu :[
         {
-          title: 'Non Veg Biryanis',
+          title: 'Stroke and Coronavirus (COVID-19)',
           data: [
-            {key:'Chicken Biryani', value:false},
+            {key:"It is important that we stay connected with our loved ones, and with video calling it couldn't be easier."+
+                                          "We now have aphasia-friendly guides available on how to use Zoom, WhatsApp and Skype."+
+                                          "Download the instructions on how to use different versions below." +
+                                          "An introduction to video calling with people with aphasia - a full overview",
+             value:"It is important that we stay connected with our loved ones, and with video calling it couldn't be easier."+
+                                          "We now have aphasia-friendly guides available on how to use Zoom, WhatsApp and Skype."+
+                                          "Download the instructions on how to use different versions below." +
+                                          "An introduction to video calling with people with aphasia - a full overview"},
             {key:'Mutton Biryani', value:false},
             {key:'Prawns Biryani', value:false},
           ]
         },
         {
-          title: 'Pizzas',
+          title: 'Stroke Apps',
           data: [
             {key:'Chicken Dominator', value:false},
             {key:'Peri Peri Chicken', value:false},
@@ -27,7 +34,7 @@ export default class InfoSupport extends Component {
           ]
         },
         {
-         title: 'Drinks',
+         title: 'Stroke News',
          data: [
            {key:'Cocktail', value:false},
            {key:'Mocktail', value:false},
@@ -36,7 +43,34 @@ export default class InfoSupport extends Component {
           ]
         },
         {
-          title: 'Deserts',
+          title: 'Webinars',
+          data: [
+            {key:'Choco Lava Cake', value:false},
+            {key:'Gulabjamun', value:false},
+            {key:'Kalajamun', value:false},
+            {key:'Jalebi', value:false}
+          ]
+        },
+        {
+          title: 'Blog',
+          data: [
+            {key:'Choco Lava Cake', value:false},
+            {key:'Gulabjamun', value:false},
+            {key:'Kalajamun', value:false},
+            {key:'Jalebi', value:false}
+          ]
+        },
+        {
+          title: 'Videos',
+          data: [
+            {key:'Choco Lava Cake', value:false},
+            {key:'Gulabjamun', value:false},
+            {key:'Kalajamun', value:false},
+            {key:'Jalebi', value:false}
+          ]
+        },
+        {
+          title: 'Guides',
           data: [
             {key:'Choco Lava Cake', value:false},
             {key:'Gulabjamun', value:false},
@@ -50,13 +84,16 @@ export default class InfoSupport extends Component {
 
   renderAccordians=()=> {
     const items = [];
+    let i = 0;
     for (item of this.state.menu) {
         items.push(
             <Accordian
                 title = {item.title}
                 data = {item.data}
+                key = {i}
             />
         );
+        i++;
     }
     return items;
   }

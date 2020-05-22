@@ -7,11 +7,10 @@ class AppUtils {
     const items = [];
     var i = 0;
     for( item of content.body ){
-      console.log(item, "off")
-      switch(Object.keys(item)[0]){
+      switch(item.key){
         case 'title':{
           items.push(
-            <ContentTitle key={i} title={item.title}/>
+            <ContentTitle key={i} title={item.value}/>
           )
           break;
         }
@@ -23,7 +22,7 @@ class AppUtils {
         }
         case 'thumbnail':{
           items.push(
-            <ContentFeatureImage key={i} image={item.thumbnail}/>
+            <ContentFeatureImage key={i} image={item.value}/>
           )
           break;
         }

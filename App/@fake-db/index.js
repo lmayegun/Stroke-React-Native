@@ -1,4 +1,4 @@
 import mock from './mock';
-import './db/e-commerce-db';
+import './db/contents-db';
 
 mock.onAny().passThrough();

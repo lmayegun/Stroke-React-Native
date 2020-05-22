@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useState} from 'react';
 import { View, StyleSheet, Dimensions, Button, Text, TextInput, CheckBox, Picker } from 'react-native';
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 import {withNavigation} from 'react-navigation';
@@ -32,8 +32,8 @@ const renderTabBar = props =>(
 )
 
 const HomeScreenTab = ()=> {
-  const [index, setIndex] = React.useState(0);
-  const [routes] = React.useState([
+  const [index, setIndex] = useState(0);
+  const [routes] = useState([
     { key: 'topStories', title: 'Top Stories' },
     { key: 'infoSup', title: 'Info & Support' },
     { key: 'help', title: 'Help Using The App' },

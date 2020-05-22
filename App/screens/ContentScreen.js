@@ -15,18 +15,13 @@ const ContentScreen = ({navigation})=>{
   const [content, setContent] = useState(null);
 
   useEffect(()=>{
-    dispatch(Actions.getContent({productId:contentId}));
+    dispatch(Actions.cleanContent())
+    dispatch(Actions.getContent({contentId:contentId}));
   },[dispatch])
 
   useEffect(()=>{
     setContent(contentData);
   },[contentData])
-
-  useEffect(()=>{
-    return () => {
-      dispatch(Actions.cleanContent())
-   }
-  },[])
 
   if(!content){
     return null;

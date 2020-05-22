@@ -14,7 +14,6 @@ class CreateAccountScreen extends Component {
       await axios.post(`${ROOT_URL}/requestOneTimePassword`, { phone: this.state.phone });
     } catch (err) {
       alert("that number is already been used");
-      console.log(err);
     }
   }
 

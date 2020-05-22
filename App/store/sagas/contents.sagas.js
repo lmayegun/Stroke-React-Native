@@ -3,7 +3,7 @@ import axios from 'axios';
 
 function* getContent(payload){
   try{
-    const request = yield axios.get('/api/e-commerce-app/product', {
+    const request = yield axios.get('/api/contents-app/content', {
                                         params:payload.payload
                                       })
                                       .then((response) => {
@@ -17,7 +17,7 @@ function* getContent(payload){
 
 function* getContentNews(){
   try{
-    const request = yield axios.get('/api/e-commerce-app/products').then((response) => {
+    const request = yield axios.get('/api/contents-app/contents').then((response) => {
         return response.data
       }
     );
