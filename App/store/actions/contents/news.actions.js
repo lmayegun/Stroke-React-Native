@@ -22,3 +22,10 @@ export function getAllVideos(){
     type: 'GET_ALL_VIDEOS'
   }
 }
+
+export function getAvideo( payload ){
+  return {
+    type: 'GET_VIDEO',
+    payload
+  }
+}

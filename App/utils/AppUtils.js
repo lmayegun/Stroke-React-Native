@@ -3,6 +3,14 @@ import {ContentTitle, ContentLastUpdated, ContentFeatureImage} from '../componen
 
 class AppUtils {
 
+  static usePrevious(value) {
+    const ref = useRef();
+    useEffect(() => {
+      ref.current = value;
+    });
+    return ref.current;
+  }
+
   static contentComponents(content){
     const items = [];
     var i = 0;

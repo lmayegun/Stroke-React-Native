@@ -8,7 +8,7 @@ const VideoThumb = ({navigation, data, container, videoWrapper, description})=>{
   return(
     <View style={[styles.container, container]}>
       <TouchableOpacity
-        onPress={()=>{navigation.navigate('VideoPlayer')}}
+        onPress={()=>{ navigation.navigate('VideoPlayer', {id:item.id}) }}
         >
         <ImageBackground
           source={item.thumbnail}

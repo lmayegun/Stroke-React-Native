@@ -160,7 +160,7 @@ const contentsDB = {
       id: '1',
       title: 'video one',
       thumbnail: require("../../assets/images/contents/thumbnail/tash.png"),
-      video: require("../../assets/videos/moana.mp4"),
+      video: require("../../assets/videos/jayrock.mp4"),
     },
     {
       id: '2',
@@ -172,7 +172,7 @@ const contentsDB = {
       id: '3',
       title: 'video three',
       thumbnail: require("../../assets/images/contents/thumbnail/tash.png"),
-      video: require("../../assets/videos/moana.mp4"),
+      video: require("../../assets/videos/jayrock.mp4"),
     }
   ]
 };
@@ -181,12 +181,18 @@ mock.onGet('/api/contents-app/contents').reply(() => {
     return [200, contentsDB.contents];
 });
 
+mock.onGet('/api/contents-app/content').reply((request) => {
+    const {contentId} = request.params;
+    const response = _.find(contentsDB.contents, {id: contentId});
+    return [200, response];
+});
+
 mock.onGet('/api/contents-app/videos').reply(() => {
     return [200, contentsDB.videos];
 });
 
-mock.onGet('/api/contents-app/content').reply((request) => {
-    const {contentId} = request.params;
-    const response = _.find(contentsDB.contents, {id: contentId});
+mock.onGet('/api/contents-app/video').reply((request) => {
+    const {videoId} = request.params;
+    const response = _.find(contentsDB.videos, {id: videoId});
     return [200, response];
 });

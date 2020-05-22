@@ -1,56 +1,46 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, Text, StyleSheet, Dimensions} from 'react-native';
+import {withNavigation} from 'react-navigation';
+import { useDispatch, useSelector } from 'react-redux';
 import { Video } from 'expo-av';
 import { MaterialIcons, Octicons } from '@expo/vector-icons';
 
-export default class VideoPlayerScreen extends React.Component {
-  state = {
-    mute: false,
-    shouldPlay: true,
+import * as Actions from '../store/actions/contents/news.actions';
+
+const VideoPlayerScreen = ({navigation})=>{
+  const videoId = navigation.getParam('id');
+  const dispatch = useDispatch();
+  const videoData = useSelector(({videos})=> videos.videoState );
+
+  const [video, setVideo] = useState(null);
+
+  useEffect(()=>{
+    dispatch(Actions.getAvideo({videoId:videoId}))
+  },[dispatch])
+
+  useEffect(()=>{
+    setVideo(videoData)
+  },[videoData]);
+
+  if( !video ){
+    return null
   }
 
-  handlePlayAndPause = () => {
-    this.setState((prevState) => ({
-       shouldPlay: !prevState.shouldPlay
-    }));
-  }
-
-  handleVolume = () => {
-    this.setState(prevState => ({
-      mute: !prevState.mute,
-    }));
-  }
-
-  render() {
-    const { width } = Dimensions.get('window');
-    return (
-      <View style={styles.container}>
-      	<Text style={{ textAlign: 'center' }}> React Native Video </Text>
-      	<Video
-      	  source={require('../assets/videos/moana.mp4')}
-          shouldPlay={this.state.shouldPlay}
-          resizeMode="cover"
-          style={{ width, height: 300 }}
-          isMuted={this.state.mute}
-          useNativeControls={true}
-      	/>
-        {/*<View style={styles.controlBar}>
-            <MaterialIcons
-              name={this.state.mute ? "volume-mute" : "volume-up"}
-              size={45}
-              color="white"
-              onPress={this.handleVolume}
-            />
-            <MaterialIcons
-              name={this.state.shouldPlay ? "pause" : "play-arrow"}
-              size={45}
-              color="white"
-              onPress={this.handlePlayAndPause}
-            />
-          </View>*/}
-      </View>
-    );
-  }
+  console.log(video, "vimeo")
+  const { width } = Dimensions.get('window');
+  return(
+    <View style={styles.container}>
+      <Text style={{ textAlign: 'center' }}> React Native Video </Text>
+      <Video
+        source={video.video}
+        shouldPlay={true}
+        resizeMode="cover"
+        style={{ width, height: 300 }}
+        isMuted={false}
+        useNativeControls={true}
+      />
+    </View>
+  )
 }
 
 const styles = StyleSheet.create({
@@ -72,3 +62,5 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(0, 0, 0, 0.5)",
   }
 });
+
+export default withNavigation(VideoPlayerScreen);

@@ -6,6 +6,7 @@ const content = function( state = initialState, action ){
     case 'GET_CONTENT_SUCCESS':
     {
       return{
+        ...state,
         contentState: action.payload
       }
     }

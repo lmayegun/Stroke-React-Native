@@ -39,8 +39,23 @@ function* getVideos(){
   }
 }
 
+function* getVideo(payload){
+  try{
+    const request = yield axios.get('/api/contents-app/video', {
+                                        params:payload.payload
+                                      })
+                                      .then((response) => {
+                                        return response.data
+                                      });
+    yield put({ type: 'GET_VIDEO_SUCCESS', payload:request });
+  } catch (error){
+    yield put({ type: 'GET_VIDEO_FAILED', payload:'failed' });
+  }
+}
+
 export const contentsSagas = [
   takeLatest('GET_ALL_NEWS', getContentNews),
   takeLatest('GET_CONTENT', getContent),
   takeLatest('GET_ALL_VIDEOS', getVideos),
+  takeLatest('GET_VIDEO', getVideo),
 ]
