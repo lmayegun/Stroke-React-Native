@@ -3,20 +3,21 @@ import {View, Text, StyleSheet, TouchableOpacity, ImageBackground} from 'react-n
 import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
 import {withNavigation} from 'react-navigation';
 
-const VideoThumb = ({navigation, container, videoWrapper, description})=>{
+const VideoThumb = ({navigation, data, container, videoWrapper, description})=>{
+  const {item} = data;
   return(
     <View style={[styles.container, container]}>
       <TouchableOpacity
         onPress={()=>{navigation.navigate('VideoPlayer')}}
         >
         <ImageBackground
-          source={require('../assets/images/frank-ocean.jpg')}
+          source={item.thumbnail}
           style={[styles.videoWrapper, videoWrapper]}>
           <FontAwesome name="play-circle" color={'#fff'} size={30} style={[styles.videoIcon]} />
           <Text > Video </Text>
         </ImageBackground>
       </TouchableOpacity>
-      <Text style={[description]}>To watch a video, click on the video and it.</Text>
+      <Text style={[description]}>{item.title}</Text>
     </View>
   )
 }

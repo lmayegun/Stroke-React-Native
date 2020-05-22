@@ -159,20 +159,20 @@ const contentsDB = {
     {
       id: '1',
       title: 'video one',
-      video: require("../../assets/images/contents/thumbnail/tash.png"),
-      thumbnail: require("../../assets/videos/moana.mp4"),
+      thumbnail: require("../../assets/images/contents/thumbnail/tash.png"),
+      video: require("../../assets/videos/moana.mp4"),
     },
     {
       id: '2',
       title: 'video two',
-      video: require("../../assets/images/contents/thumbnail/tash.png"),
-      thumbnail: require("../../assets/videos/moana.mp4"),
+      thumbnail: require("../../assets/images/contents/thumbnail/yosemite.jpg"),
+      video: require("../../assets/videos/moana.mp4"),
     },
     {
       id: '3',
       title: 'video three',
-      video: require("../../assets/images/contents/thumbnail/tash.png"),
-      thumbnail: require("../../assets/videos/moana.mp4"),
+      thumbnail: require("../../assets/images/contents/thumbnail/tash.png"),
+      video: require("../../assets/videos/moana.mp4"),
     }
   ]
 };

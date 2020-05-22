@@ -13,19 +13,27 @@ const { width } = Dimensions.get('window');
 const TopStories = ({navigation}) => {
   const dispatch = useDispatch();
   const contentsData = useSelector( ({news}) => news.newsState );
+  const videosData = useSelector( ({videos}) => videos.videosState );
   const [contents, setContents] = useState(null)
+  const [videos, setVideos] = useState(null)
 
   useEffect(()=>{
     dispatch(Actions.getNewsContent());
+    dispatch(Actions.getAllVideos());
   },[dispatch])
 
   useEffect(()=>{
     setContents(contentsData)
-  },[contentsData])
+    setVideos(videosData)
+  },[contentsData, videosData])
 
   if( !contents ){
     return null
   }
+
+  // if( !videos ){
+  //   return null
+  // }
 
   return(
     <View style={[styles.scene]}>
@@ -42,12 +50,13 @@ const TopStories = ({navigation}) => {
                 <View style={{height:220, backgroundColor:Colors.PHYSICAL, marginTop:10, padding:10, }}>
                   <Text style={{ color:'white', marginBottom: 10, fontSize:16}}>EXERCISE VIDEOS</Text>
                   <FlatList
-                    data={contents}
+                    data={videos}
                     horizontal={true}
                     keyExtractor={(item)=> item.id}
                     renderItem={(item)=>{
                       return(
                         <VideoThumb
+                          data={item}
                           container={{
                             display:'flex',
                             width:200,
