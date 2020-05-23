@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
   scene: {
     flex: 1,
     width: width,
-    paddingTop: 10,
+    padding: 10,
     backgroundColor: '#f0f0f0',
   },
 });

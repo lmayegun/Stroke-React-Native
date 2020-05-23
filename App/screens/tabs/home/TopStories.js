@@ -82,12 +82,13 @@ const TopStories = ({navigation}) => {
                 <View style={{height:220, backgroundColor:Colors.PRACTICAL, marginTop:10, padding:10, }}>
                   <Text style={{ color:'white', marginBottom: 10, fontSize:16}}>PRACTICAL VIDEOS</Text>
                   <FlatList
-                    data={contents}
+                    data={videos}
                     horizontal={true}
-                    keyExtractor={(item)=> item.id}
-                    renderItem={(item)=>{
+                    keyExtractor={(video)=> video.id}
+                    renderItem={(video)=>{
                       return(
                         <VideoThumb
+                          data={video}
                           container={{
                             display:'flex',
                             width:200,

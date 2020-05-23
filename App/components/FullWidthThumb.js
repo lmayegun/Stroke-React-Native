@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     position:'relative',
     height: 280,
     backgroundColor: 'white',
-    marginBottom:20
+    marginBottom:0
   },
   image:{
     flex: 8,
