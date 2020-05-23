@@ -28,42 +28,53 @@ const ContentScreen = ({navigation})=>{
   }
 
   const items = AppUtils.contentComponents(content);
-
-  if(false){
-    return(
-      <View style={[styles.centeredView]}>
-        <Modal
-            animationType="slide"
-            transparent={true}
-            visible={modalVisible}
-            onRequestClose={() => {
-              Alert.alert("Modal has been closed.");
-            }}
-          >
-            <View style={styles.centeredView}>
-              <View style={styles.modalView}>
-                <Text style={styles.modalText}>Hello World!</Text>
-
+  let i = 0;
+  if(true){
+    items.push(
+    <View style={[styles.centeredView]}>
+      <Modal
+          animationType="slide"
+          transparent={true}
+          visible={modalVisible}
+          onRequestClose={() => {
+            Alert.alert("Modal has been closed.");
+          }}
+        >
+          <View style={styles.centeredView}>
+            <View style={styles.modalView}>
+              <Text style={styles.modalTitle}>Permission required</Text>
+              <Text style={styles.modalText}>User authentication is required for this content to be view. Make sure you are login or create a new user account.</Text>
+              <View style={{display:'flex', flexDirection:'row'}}>
                 <TouchableHighlight
-                  style={{ ...styles.openButton, backgroundColor: "#2196F3" }}
+                  style={{ ...styles.openButton}}
                   onPress={() => {
+                    navigation.navigate('CreateAccount');
                     setModalVisible(!modalVisible);
                   }}
                 >
-                  <Text style={styles.textStyle}>Hide Modal</Text>
+                  <Text style={styles.textStyle}>Create account</Text>
+                </TouchableHighlight>
+                <TouchableHighlight
+                  style={{ ...styles.openButton}}
+                  onPress={() => {
+                    navigation.navigate('Login')
+                    setModalVisible(!modalVisible);
+                  }}
+                >
+                  <Text style={styles.textStyle}>Login</Text>
                 </TouchableHighlight>
               </View>
             </View>
-          </Modal>
-      </View>
-    )
-  }else{
-    return(
-      <ScrollView style={[styles.container]}>
-        {items}
-      </ScrollView>
+          </View>
+        </Modal>
+    </View>
     )
   }
+  return(
+    <ScrollView style={[styles.container]}>
+      {items}
+    </ScrollView>
+  )
 }
 
 const styles = StyleSheet.create({
@@ -79,15 +90,15 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 22,
-    backgroundColor: 'grey'
+    marginTop: 0,
+    backgroundColor: '#00000077'
   },
   modalView: {
     margin: 20,
     backgroundColor: "white",
-    borderRadius: 20,
-    padding: 35,
-    alignItems: "center",
+    borderRadius: 2,
+    padding: 15,
+    width: 85+'%',
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -97,18 +108,23 @@ const styles = StyleSheet.create({
     elevation: 5
   },
   openButton: {
-    backgroundColor: "#F194FF",
     padding: 10,
-    elevation: 2
+    elevation: 2,
+    alignSelf: 'flex-end'
   },
   textStyle: {
-    color: "white",
+    color: "black",
     fontWeight: "bold",
     textAlign: "center"
   },
+  modalTitle: {
+    marginBottom: 15,
+    fontWeight: 'bold',
+    textAlign: "left"
+  },
   modalText: {
     marginBottom: 15,
-    textAlign: "center"
+    textAlign: "left"
   }
 });
 
