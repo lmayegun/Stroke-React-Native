@@ -17,6 +17,12 @@ const videos = function( state = initialState, action ){
         videoState: action.payload
       }
     }
+    case 'CLEAN_VIDEO':
+    {
+      return{
+        videoState: null
+      }
+    }
     default:
     {
       return state;

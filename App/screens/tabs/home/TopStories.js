@@ -52,11 +52,11 @@ const TopStories = ({navigation}) => {
                   <FlatList
                     data={videos}
                     horizontal={true}
-                    keyExtractor={(item)=> item.id}
-                    renderItem={(item)=>{
+                    keyExtractor={(video)=> video.id}
+                    renderItem={(video)=>{
                       return(
                         <VideoThumb
-                          data={item}
+                          data={video}
                           container={{
                             display:'flex',
                             width:200,
@@ -125,6 +125,7 @@ const styles = StyleSheet.create({
     flex: 1,
     width: width,
     backgroundColor: '#f0f0f0',
+    padding:10,
   },
 });
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import {ContentTitle, ContentLastUpdated, ContentFeatureImage} from '../components/content';
 
 class AppUtils {

@@ -37,38 +37,6 @@ const CategoryScreen = ({navigation}) => {
               return(
                 <FullWidthThumb content={item} />
               )
-            }else if( index == 5){
-              return(
-                <View style={{height:150, backgroundColor:Colors.PHYSICAL, marginTop:10, padding:10, }}>
-                  <Text style={{ color:'white', marginBottom: 10, fontSize:16}}>EXERCISE VIDEOS</Text>
-                  <FlatList
-                    data={contents}
-                    horizontal={true}
-                    keyExtractor={(item)=> item.id}
-                    renderItem={(item)=>{
-                      return(
-                        <VideoThumb />
-                      )
-                    }}
-                    />
-                </View>
-              )
-            }else if( index == 10){
-              return(
-                <View style={{height:150, backgroundColor:Colors.PRACTICAL, marginTop:10, padding:10, }}>
-                  <Text style={{ color:'white', marginBottom: 10, fontSize:16}}>PRACTICAL VIDEOS</Text>
-                  <FlatList
-                    data={contents}
-                    horizontal={true}
-                    keyExtractor={(item)=> item.id}
-                    renderItem={(item)=>{
-                      return(
-                        <VideoThumb />
-                      )
-                    }}
-                    />
-                </View>
-              )
             }else{
               return(
                 <ContentThumbnail content={item} />
@@ -86,6 +54,7 @@ const styles = StyleSheet.create({
     flex: 1,
     width: width,
     backgroundColor: '#f0f0f0',
+    padding:10,
   },
 });
 

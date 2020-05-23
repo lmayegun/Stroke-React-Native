@@ -12,30 +12,31 @@ const { width } = Dimensions.get('window');
 
 const Emotion = ({navigation}) => {
   const dispatch = useDispatch();
-  const contentsData = useSelector( ({news}) => news.newsState );
-  const [contents, setContents] = useState(null)
+  const videosData = useSelector( ({videos}) => videos.videosState );
+  const [videos, setVideos] = useState(null)
 
   useEffect(()=>{
-    dispatch(Actions.getNewsContent());
+    dispatch(Actions.getAllVideos());
   },[dispatch])
 
   useEffect(()=>{
-    setContents(contentsData)
-  },[contentsData])
+    setVideos(videosData)
+  },[videosData])
 
-  if( !contents ){
+  if( !videos ){
     return null
   }
-
+  console.log(videos, "daniels sys")
   return(
     <View style={[styles.scene]}>
       <FlatList
         vertical={true}
-        data={contents}
-        keyExtractor={(item)=> item.id}
-        renderItem={({item, index})=>{
+        data={videos}
+        keyExtractor={(video)=> video.id}
+        renderItem={(video)=>{
           return(
             <VideoThumb
+              data={video}
               container={{
                 width:100+'%',
                 marginRight: 20,
