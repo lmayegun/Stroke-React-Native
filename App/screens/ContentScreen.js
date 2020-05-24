@@ -8,7 +8,7 @@ import AppUtils from '../utils/AppUtils';
 import * as Actions from '../store/actions/contents/news.actions';
 
 const ContentScreen = ({navigation})=>{
-  const [modalVisible, setModalVisible] = useState(true);
+  const [modalVisible, setModalVisible] = useState(null);
   const contentId = navigation.getParam('id');
   const dispatch = useDispatch();
   const contentData = useSelector( ({content}) => content.contentState );
@@ -27,18 +27,29 @@ const ContentScreen = ({navigation})=>{
     return null;
   }
 
+  navigation.addListener(
+    'didBlur',
+    payload => {
+      setModalVisible(false);
+    }
+  );
+
+  navigation.addListener(
+    'didFocus',
+    payload => {
+      setModalVisible(content.gated);
+    }
+  );
+
   const items = AppUtils.contentComponents(content);
   let i = 0;
-  if(true){
+  if( navigation.isFocused() ){
     items.push(
     <View style={[styles.centeredView]}>
       <Modal
           animationType="slide"
           transparent={true}
           visible={modalVisible}
-          onRequestClose={() => {
-            Alert.alert("Modal has been closed.");
-          }}
         >
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
@@ -48,8 +59,8 @@ const ContentScreen = ({navigation})=>{
                 <TouchableHighlight
                   style={{ ...styles.openButton}}
                   onPress={() => {
+                    setModalVisible(false);
                     navigation.navigate('CreateAccount');
-                    setModalVisible(!modalVisible);
                   }}
                 >
                   <Text style={styles.textStyle}>Create account</Text>
@@ -62,6 +73,15 @@ const ContentScreen = ({navigation})=>{
                   }}
                 >
                   <Text style={styles.textStyle}>Login</Text>
+                </TouchableHighlight>
+                <TouchableHighlight
+                  style={{ ...styles.openButton}}
+                  onPress={() => {
+                    setModalVisible(false);
+                    navigation.goBack();
+                  }}
+                >
+                  <Text style={styles.textStyle}>Go Back</Text>
                 </TouchableHighlight>
               </View>
             </View>

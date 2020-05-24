@@ -12,6 +12,7 @@ const contentsDB = {
       "title": "magna excepteur deserunt nostrud commodo amet sunt aute nulla ipsum",
       "thumbnail": require("../../assets/images/contents/thumbnail/tash.png"),
       "posted": "2017-05-20T09:20:32 -01:00",
+      "gated":true,
       "body": [
         {key:"title", value:"Mac Miller magna excepteur deserunt nostrud commodo amet sunt aute nulla ipsum"},
         {key:"posted", value:"2017-05-20T09:20:32 -01:00"},
@@ -29,6 +30,7 @@ const contentsDB = {
       "title": "magna excepteur deserunt nostrud commodo amet sunt aute nulla ipsum",
       "thumbnail": require("../../assets/images/contents/thumbnail/tash.png"),
       "posted": "2017-05-20T09:20:32 -01:00",
+      "gated":true,
       "body": [
         {key:"title", value:"chance magna excepteur deserunt nostrud commodo amet sunt aute nulla ipsum"},
         {key:"posted", value:"2017-05-20T09:20:32 -01:00"},
@@ -46,6 +48,7 @@ const contentsDB = {
       "title": "magna excepteur deserunt nostrud commodo amet sunt aute nulla ipsum",
       "thumbnail": require("../../assets/images/contents/thumbnail/tash.png"),
       "posted": "2017-05-20T09:20:32 -01:00",
+      "gated":true,
       "body": [
         {key:"title", value:"magna excepteur deserunt nostrud commodo amet sunt aute nulla ipsum"},
         {key:"posted", value:"2017-05-20T09:20:32 -01:00"},
@@ -62,6 +65,7 @@ const contentsDB = {
       "title": "magna excepteur deserunt nostrud commodo amet sunt aute nulla ipsum",
       "thumbnail": require("../../assets/images/contents/thumbnail/tash.png"),
       "posted": "2017-05-20T09:20:32 -01:00",
+      "gated":false,
       "body": [
         {key:"title", value:"saint magna excepteur deserunt nostrud commodo amet sunt aute nulla ipsum"},
         {key:"posted", value:"2017-05-20T09:20:32 -01:00"},
@@ -78,6 +82,7 @@ const contentsDB = {
       "title": "magna excepteur deserunt nostrud commodo amet sunt aute nulla ipsum",
       "thumbnail": require("../../assets/images/contents/thumbnail/tash.png"),
       "posted": "2017-05-20T09:20:32 -01:00",
+      "gated":false,
       "body": [
         {key:"title", value:"magna excepteur deserunt nostrud commodo amet sunt aute nulla ipsum"},
         {key:"posted", value:"2017-05-20T09:20:32 -01:00"},
@@ -95,6 +100,7 @@ const contentsDB = {
       "title": "magna excepteur deserunt nostrud commodo amet sunt aute nulla ipsum",
       "thumbnail": require("../../assets/images/contents/thumbnail/tash.png"),
       "posted": "2017-05-20T09:20:32 -01:00",
+      "gated":true,
       "body": [
         {key:"title", value:"possible magna excepteur deserunt nostrud commodo amet sunt aute nulla ipsum"},
         {key:"posted", value:"2017-05-20T09:20:32 -01:00"},
@@ -112,6 +118,7 @@ const contentsDB = {
       "title": "magna excepteur deserunt nostrud commodo amet sunt aute nulla ipsum",
       "thumbnail": require("../../assets/images/contents/thumbnail/tash.png"),
       "posted": "2017-05-20T09:20:32 -01:00",
+      "gated":true,
       "body": [
         {key:"title", value:"sscc magna excepteur deserunt nostrud commodo amet sunt aute nulla ipsum"},
         {key:"posted", value:"2017-05-20T09:20:32 -01:00"},
@@ -129,6 +136,7 @@ const contentsDB = {
       "title": "magna excepteur deserunt nostrud commodo amet sunt aute nulla ipsum",
       "thumbnail": require("../../assets/images/contents/thumbnail/tash.png"),
       "posted": "2017-05-20T09:20:32 -01:00",
+      "gated":false,
       "body": [
         {key:"title", value:"magna essxcepteur deserunt nostrud commodo amet sunt aute nulla ipsum"},
         {key:"posted", value:"2017-05-20T09:20:32 -01:00"},
@@ -146,6 +154,7 @@ const contentsDB = {
       "title": "magna excepteur deserunt nostrud commodo amet sunt aute nulla ipsum",
       "thumbnail": require("../../assets/images/contents/thumbnail/tash.png"),
       "posted": "2017-05-20T09:20:32 -01:00",
+      "gated":true,
       "body": [
         {key:"title", value:"magna excepteur deserunt nostrud commodo amet sunt aute nulla ipsum"},
         {key:"posted", value:"2017-05-20T09:20:32 -01:00"},
