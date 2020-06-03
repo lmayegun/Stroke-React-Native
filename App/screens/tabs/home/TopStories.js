@@ -10,7 +10,7 @@ import * as Actions from '../../../store/actions/contents/news.actions';
 
 const { width } = Dimensions.get('window');
 
-const TopStories = ({navigation}) => {
+const TopStories = ({navigation, route}) => {
   const dispatch = useDispatch();
   const contentsData = useSelector( ({news}) => news.newsState );
   const videosData = useSelector( ({videos}) => videos.videosState );
@@ -27,9 +27,18 @@ const TopStories = ({navigation}) => {
     setVideos(videosData)
   },[contentsData, videosData])
 
+  useEffect(()=>{
+    return () =>{
+      // alert("hi")
+      // console.log("contentsData", "cheese")
+    }
+  },[])
+
   if( !contents ){
     return null
   }
+
+  console.log(route.key)
 
   // if( !videos ){
   //   return null
@@ -126,7 +135,8 @@ const styles = StyleSheet.create({
     flex: 1,
     width: width,
     backgroundColor: '#f0f0f0',
-    padding:10,
+    paddingTop:10,
+    paddingBottom:10,
   },
 });
 

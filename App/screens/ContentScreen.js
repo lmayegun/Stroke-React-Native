@@ -8,11 +8,16 @@ import AppUtils from '../utils/AppUtils';
 import * as Actions from '../store/actions/contents/news.actions';
 
 const ContentScreen = ({navigation})=>{
-  const [modalVisible, setModalVisible] = useState(null);
   const contentId = navigation.getParam('id');
+
   const dispatch = useDispatch();
+
   const contentData = useSelector( ({content}) => content.contentState );
+  const authData = useSelector( ({auth}) => auth.auth );
+
   const [content, setContent] = useState(null);
+  const [modalVisible, setModalVisible] = useState(null);
+  const [auth, setAuth] = useState(authData)
 
   useEffect(()=>{
     dispatch(Actions.cleanContent())
@@ -21,7 +26,8 @@ const ContentScreen = ({navigation})=>{
 
   useEffect(()=>{
     setContent(contentData);
-  },[contentData])
+    setAuth(authData);
+  },[contentData, authData])
 
   if(!content){
     return null;
@@ -42,8 +48,9 @@ const ContentScreen = ({navigation})=>{
   );
 
   const items = AppUtils.contentComponents(content);
+  alert(items.length)
   let i = 0;
-  if( navigation.isFocused() ){
+  if( content.gated && auth == false ){
     items.push(
     <View style={[styles.centeredView]}>
       <Modal

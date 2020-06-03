@@ -11,27 +11,37 @@ const { width } = Dimensions.get('window');
 const centerImageSize = width / 3;
 
 const MsgHub = ( {navigation}) => {
-  return (
-    <View style={styles.container}>
-      <ImageBackground source={image} style={styles.image}>
-        <Text style={styles.lineone}>INTRODUCING</Text>
-        <Text style={styles.text}>MY STROKE GUIDE</Text>
-        <FontAwesome name="heartbeat" size={centerImageSize} style={styles.icon}/>
-        <Text style={styles.summary}>Create your own news feed by choosing teams, stars, experts and sports</Text>
-        <Text style={styles.summary}>All you need is a free account</Text>
-        <View>
-        <Button
-          title={'Create Account'}
-          onPress={()=>{navigation.navigate('CreateAccount')}}
-        />
-        <Button
-          title={'Log in'}
-          onPress={()=>{navigation.navigate('Login')}}
-        />
-        </View>
-      </ImageBackground>
-    </View>
-  )
+  if(false){
+    return (
+      <View style={styles.container}>
+        <ImageBackground source={image} style={styles.image}>
+          <Text style={styles.lineone}>INTRODUCING</Text>
+          <Text style={styles.text}>MY STROKE GUIDE</Text>
+          <FontAwesome name="heartbeat" size={centerImageSize} style={styles.icon}/>
+          <Text style={styles.summary}>Create your own news feed by choosing teams, stars, experts and sports</Text>
+          <Text style={styles.summary}>All you need is a free account</Text>
+          <View style={{display:'flex', flexDirection:'row'}}>
+          <View style={{width:50+'%', margin: 10, marginLeft: 0}}>
+            <Button
+              title={'Create'}
+              onPress={()=>{navigation.navigate('CreateAccount')}}
+            />
+          </View>
+          <View style={{width:50+'%', margin: 10}}>
+            <Button
+              title={'Log in'}
+              onPress={()=>{navigation.navigate('Login')}}
+            />
+          </View>
+          </View>
+        </ImageBackground>
+      </View>
+    )
+  }else{
+    return(
+      <View>How</View>
+    )
+  }
 };
 
 const styles = StyleSheet.create({

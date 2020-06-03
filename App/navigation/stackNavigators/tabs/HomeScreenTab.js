@@ -4,7 +4,7 @@ import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 import {withNavigation} from 'react-navigation';
 
 import TopStories from '../../../screens/tabs/home/TopStories';
-import MsgHub from '../../../screens/tabs/home/MsgHub';
+import Events from '../../../screens/tabs/home/Events';
 import InfoSupport from '../../../screens/tabs/home/InfoSupport';
 
 const initialLayout = { width: Dimensions.get('window').width};
@@ -35,16 +35,16 @@ const HomeScreenTab = ()=> {
   const [index, setIndex] = useState(0);
   const [routes] = useState([
     { key: 'topStories', title: 'Top Stories' },
+    { key: 'events', title: 'Event and Challenges' },
     { key: 'infoSup', title: 'Info & Support' },
-    { key: 'help', title: 'Help Using The App' },
-    { key: 'msgHub', title: 'My MSG' },
+    // { key: 'msgHub', title: 'My MSG' },
   ]);
 
   const renderScene = SceneMap({
-    msgHub: MsgHub,
     topStories: TopStories,
+    events: Events,
     infoSup: InfoSupport,
-    help: Help,
+    // msgHub: MsgHub,
   });
 
   return (
@@ -54,16 +54,10 @@ const HomeScreenTab = ()=> {
       onIndexChange={setIndex}
       renderTabBar= { renderTabBar  }
       initialLayout={initialLayout}
+      lazy={true}
     />
   );
 }
-
-const Help = () => (
-  <View style={[styles.scene, { backgroundColor: 'pink' }]}>
-    <Text> Help </Text>
-  </View>
-);
-
 
 export default HomeScreenTab
 

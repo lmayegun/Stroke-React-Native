@@ -25,14 +25,15 @@ class CreateAccountScreen extends Component {
   }
 
   render() {
-    
+
     return (
       <View style={[styles.container]}>
         <View style={{ marginBottom: 10 }}>
           <Text style={{
                         textAlign:'center',
                         fontSize:24,
-                        fontWeight:'bold'
+                        fontWeight:'bold',
+                        marginBottom:10
                       }}>Create An Account</Text>
           <Text style={[styles.label]}>Title</Text>
           <Picker

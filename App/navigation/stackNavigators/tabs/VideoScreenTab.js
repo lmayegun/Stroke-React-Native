@@ -55,6 +55,7 @@ const VideoScreenTab = ()=> {
       onIndexChange={setIndex}
       renderTabBar= { renderTabBar  }
       initialLayout={initialLayout}
+      lazy={true}
     />
   );
 }

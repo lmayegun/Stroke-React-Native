@@ -16,20 +16,28 @@ const LoginScreen = ()=>{
   }
 
   return(
-    <View style={[style.container]}>
+    <View style={[styles.container]}>
       <View style={{ marginBottom: 10 }}>
-        <Text>Enter Phone Number</Text>
+      <Text style={{
+                    textAlign:'center',
+                    fontSize:24,
+                    fontWeight:'bold',
+                    marginBottom:10
+                  }}>Log In</Text>
+        <Text style={[styles.label]}>Enter Phone Number</Text>
         <TextInput
           value={phone}
           onChangeText={phone => setPhone({ phone })}
+          style={[styles.textInput]}
         />
       </View>
 
       <View style={{ marginBottom: 10 }}>
-        <Text>Enter Code</Text>
+        <Text style={[styles.label]}>Enter Code</Text>
         <TextInput
           value={code}
           onChangeText={code => setCode({ code })}
+          style={[styles.textInput]}
         />
       </View>
 
@@ -38,9 +46,19 @@ const LoginScreen = ()=>{
   )
 }
 
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
   container:{
     padding:20
+  },
+  label:{
+    marginTop:5,
+    fontWeight:'bold',
+  },
+  textInput:{
+    marginTop:4,
+    marginBottom:10,
+    borderBottomWidth:1,
+    paddingLeft:5
   }
 })
 
