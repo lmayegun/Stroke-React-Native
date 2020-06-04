@@ -2,6 +2,7 @@ import React from 'react';
 import {View, Image, Text, StyleSheet, TouchableOpacity, Dimensions} from 'react-native';
 import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
 import {withNavigation} from 'react-navigation';
+import moment from 'moment';
 
 import {Colors} from '../utils/Colors';
 import TagLabel from './TagLabel';
@@ -28,7 +29,7 @@ const ContentThumbnail = ({content, navigation}) => {
             <TagLabel tagName={tagName}/>
             <View style={[styles.time]}>
               <MaterialCommunityIcons name="progress-clock" color={'#ccc'} size={20} style={{marginRight: 4}} />
-              <Text>2h ago</Text>
+              <Text>{moment(posted, "YYYYMMDD h:mm:ss").fromNow()}</Text>
             </View>
           </View>
           <Text>{title}</Text>

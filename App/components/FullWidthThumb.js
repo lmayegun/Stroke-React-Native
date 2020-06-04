@@ -2,21 +2,28 @@ import React from 'react';
 import {View, Image, Text, StyleSheet, TouchableOpacity, Dimensions} from 'react-native';
 import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
 import {withNavigation} from 'react-navigation';
+import moment from 'moment';
 
 const FullWidthThumb = ({content, navigation})=>{
-  const {title, thumbnail } = content;
+  const {id, posted, tagName, title, thumbnail} = content;
   return(
     <View style={[styles.container]}>
-      <Image
-        source={thumbnail}
+      <TouchableOpacity
         style={[styles.image]}
-        resizeMode="cover"
-      />
+        onPress={()=>{navigation.navigate('Content', {id:id} )}}
+        >
+        <Image
+          source={thumbnail}
+          style={[styles.image]}
+          resizeMode="cover"
+        />
+      </TouchableOpacity>
       <FontAwesome name="play-circle" color={'#fff'} size={30} style={[styles.videoIcon]} />
       <View style={[styles.summaryWrapper]}>
         <View style={[styles.tagAndTime]}>
           <Text style={[styles.tag]}> Breaking </Text>
-          <Text style={[styles.time]}> Full width Thumbs</Text>
+          <MaterialCommunityIcons name="progress-clock" color={'#ccc'} size={20} style={{marginRight: 4}} />
+          <Text style={[styles.time]}> {moment(posted, "YYYYMMDD h:mm:ss").fromNow()} </Text>
         </View>
         <View>
           <Text style={[styles.summary]}>{title}</Text>

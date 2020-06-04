@@ -48,11 +48,10 @@ const ContentScreen = ({navigation})=>{
   );
 
   const items = AppUtils.contentComponents(content);
-  alert(items.length)
-  let i = 0;
+
   if( content.gated && auth == false ){
     items.push(
-    <View style={[styles.centeredView]}>
+    <View key={items.length + 1} style={[styles.centeredView]}>
       <Modal
           animationType="slide"
           transparent={true}
