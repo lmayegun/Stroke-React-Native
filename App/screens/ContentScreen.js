@@ -30,7 +30,7 @@ const ContentScreen = ({navigation})=>{
   },[contentData, authData])
 
   if(!content){
-    return null;
+    return <Text> is loading </Text>;
   }
 
   navigation.addListener(

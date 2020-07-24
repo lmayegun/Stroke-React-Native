@@ -5,7 +5,7 @@ import {withNavigation} from 'react-navigation';
 import moment from 'moment';
 
 const FullWidthThumb = ({content, navigation})=>{
-  const {id, posted, tagName, title, thumbnail} = content;
+  const {id, posted, tagName, title, thumbnail, video} = content;
   return(
     <View style={[styles.container]}>
       <TouchableOpacity
@@ -18,7 +18,11 @@ const FullWidthThumb = ({content, navigation})=>{
           resizeMode="cover"
         />
       </TouchableOpacity>
-      <FontAwesome name="play-circle" color={'#fff'} size={30} style={[styles.videoIcon]} />
+      {
+        video ?
+        <FontAwesome name="play-circle" color={'#fff'} size={30} style={[styles.videoIcon]} /> :
+        null
+      }
       <View style={[styles.summaryWrapper]}>
         <View style={[styles.tagAndTime]}>
           <Text style={[styles.tag]}> Breaking </Text>

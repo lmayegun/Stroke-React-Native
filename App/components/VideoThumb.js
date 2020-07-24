@@ -14,7 +14,6 @@ const VideoThumb = ({navigation, data, container, videoWrapper, description})=>{
           source={item.thumbnail}
           style={[styles.videoWrapper, videoWrapper]}>
           <FontAwesome name="play-circle" color={'#fff'} size={30} style={[styles.videoIcon]} />
-          <Text > Video </Text>
         </ImageBackground>
       </TouchableOpacity>
       <Text style={[description]}>{item.title}</Text>
@@ -32,7 +31,7 @@ const styles = StyleSheet.create({
   videoIcon:{
     position: 'absolute',
     bottom: 0,
-    left: 0,
+    left: 5,
   }
 })
 

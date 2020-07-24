@@ -35,7 +35,7 @@ const Events = ({navigation, route}) => {
   },[])
 
   if( !contents ){
-    return null
+    return <Text> is loading </Text>
   }
 
   console.log(route.key)

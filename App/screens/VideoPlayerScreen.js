@@ -23,7 +23,7 @@ const VideoPlayerScreen = ({navigation})=>{
   },[videoData]);
 
   if( !video ){
-    return null
+      return <Text> is loading </Text>
   }
 
   console.log(video, "vimeo")

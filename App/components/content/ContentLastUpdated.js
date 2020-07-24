@@ -1,12 +1,15 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
+import moment from 'moment';
 
 import {colorPalette} from '../../utils';
 
 const ContentLastUpdated = ({dateTime}) => {
   return(
     <View style={[styles.root]}>
-      <Text style={[styles.dateTime]}>Last Updated: {dateTime}</Text>
+      <Text style={[styles.dateTime]}>
+        Last Updated: {moment(dateTime, "YYYYMMDDhhmm").format('MMMM Do YYYY, h:mm:ss a')}
+      </Text>
     </View>
   )
 }

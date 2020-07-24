@@ -24,7 +24,7 @@ class AppUtils {
         }
         case 'posted':{
           items.push(
-            <ContentLastUpdated key={i}/>
+            <ContentLastUpdated key={i} dateTime={item.value}/>
           )
           break;
         }
