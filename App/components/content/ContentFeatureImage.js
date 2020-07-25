@@ -11,7 +11,7 @@ const ContentFeatureImage = ({image})=>{
       >
         <Image
           style={[styles.image]}
-          source={image}
+          source={{uri:image}}
         />
     </TouchableOpacity>
   )
