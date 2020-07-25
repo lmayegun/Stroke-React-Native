@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { ActivityIndicator, View, Text, StyleSheet, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, Dimensions } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import { useDispatch, useSelector } from 'react-redux';
 import { Video } from 'expo-av';
@@ -7,10 +7,12 @@ import { MaterialIcons, Octicons } from '@expo/vector-icons';
 
 import { WebView } from 'react-native-webview';
 
+import {ActivityLoader} from '../components/content';
 import * as Actions from '../store/actions/contents/news.actions';
 
 const VideoPlayerScreen = ({navigation})=>{
   const videoId = navigation.getParam('id');
+
   const dispatch = useDispatch();
   const videoData = useSelector(({videos})=> videos.videoState );
 
@@ -18,7 +20,7 @@ const VideoPlayerScreen = ({navigation})=>{
 
   useEffect(()=>{
     dispatch(Actions.cleanVideo());
-    dispatch(Actions.getAvideo({videoId:videoId}));
+    dispatch(Actions.getAvideo({videoId}));
   },[dispatch])
 
   useEffect(()=>{
@@ -27,13 +29,7 @@ const VideoPlayerScreen = ({navigation})=>{
 
   if( !video ){
     return (
-      <View style={{
-        flex: 1,
-        justifyContent: "flex-start",
-        padding: '50%'
-      }}>
-        <ActivityIndicator size="large" color="#0000ff" />
-      </View>
+      <ActivityLoader/>
     );
   }
 
@@ -57,6 +53,7 @@ const VideoPlayerScreen = ({navigation})=>{
         isMuted={false}
         useNativeControls={true}
       /> */}
+      
     </View>
   )
 }

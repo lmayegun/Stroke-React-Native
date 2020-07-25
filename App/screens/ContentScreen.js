@@ -3,7 +3,7 @@ import {View, StyleSheet, ScrollView, Image, Text, Modal, TouchableOpacity,   To
 import { useDispatch, useSelector } from 'react-redux';
 import {withNavigation} from 'react-navigation';
 
-import {ContentTitle, ContentLastUpdated} from '../components/content';
+import {ContentTitle, ContentLastUpdated, ActivityLoader} from '../components/content';
 import AppUtils from '../utils/AppUtils';
 import * as Actions from '../store/actions/contents/news.actions';
 
@@ -30,7 +30,9 @@ const ContentScreen = ({navigation})=>{
   },[contentData, authData])
 
   if(!content){
-    return <Text> is loading </Text>;
+    return (
+      <ActivityLoader />
+    );
   }
 
   navigation.addListener(
