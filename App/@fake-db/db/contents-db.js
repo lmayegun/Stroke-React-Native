@@ -159,7 +159,7 @@ const contentsDB = {
       "body": [
         {key:"title", value:"magna excepteur deserunt nostrud commodo amet sunt aute nulla ipsum"},
         {key:"posted", value:"2020 06 03 20 35"},
-        {key:"thumbnail", value:require("../../assets/images/contents/thumbnail/tash.png")},
+        {key:"thumbnail", value:"https://images.complex.com/complex/image/upload/w_680/fl_lossy,q_auto/gjdakxub6ud8zbj4fztp.jpg"},
         {key:"summary", value:"Consectetur et laboris enim excepteur sit deserunt ex ipsum anim veniam laborum labore duis ad. Anim quis eiusmod cillum eiusmod eiusmod occaecat ad minim enim consectetur excepteur deserunt. Culpa magna do magna consectetur nostrud nulla commodo dolor. Adipisicing ipsum excepteur incididunt pariatur fugiat. Id esse eu veniam est veniam ex pariatur eiusmod occaecat ea. Adipisicing qui cillum consequat nisi exercitation proident exercitation cillum dolor nulla et adipisicing sit est.\r\n"},
         {key:"title", value:"magna excepteur deserunt nostrud commodo amet sunt aute nulla ipsum"},
       ]
@@ -170,18 +170,21 @@ const contentsDB = {
       id: '1',
       title: 'video one',
       thumbnail: "https://images.complex.com/complex/image/upload/w_680/fl_lossy,q_auto/gjdakxub6ud8zbj4fztp.jpg",
+      uri:"https://www.youtube.com/watch?v=dPhwbZBvW2o",
       video: require("../../assets/videos/jayrock.mp4"),
     },
     {
       id: '2',
       title: 'video two',
       thumbnail: "https://images.complex.com/complex/image/upload/w_680/fl_lossy,q_auto/gjdakxub6ud8zbj4fztp.jpg",
+      uri:"https://www.youtube.com/watch?v=5WU7oGiwiao",
       video: require("../../assets/videos/moana.mp4"),
     },
     {
       id: '3',
       title: 'video three',
       thumbnail: "https://images.complex.com/complex/image/upload/w_680/fl_lossy,q_auto/gjdakxub6ud8zbj4fztp.jpg",
+      uri:"https://www.youtube.com/watch?v=ZJM4AQSbZDk",
       video: require("../../assets/videos/jayrock.mp4"),
     }
   ]

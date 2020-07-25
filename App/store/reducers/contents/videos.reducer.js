@@ -20,6 +20,7 @@ const videos = function( state = initialState, action ){
     case 'CLEAN_VIDEO':
     {
       return{
+        ...state,
         videoState: null
       }
     }

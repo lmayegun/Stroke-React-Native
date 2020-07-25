@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import {View, Text, StyleSheet, Dimensions} from 'react-native';
-import {withNavigation} from 'react-navigation';
+import { ActivityIndicator, View, Text, StyleSheet, Dimensions } from 'react-native';
+import { withNavigation } from 'react-navigation';
 import { useDispatch, useSelector } from 'react-redux';
 import { Video } from 'expo-av';
 import { MaterialIcons, Octicons } from '@expo/vector-icons';
@@ -17,7 +17,8 @@ const VideoPlayerScreen = ({navigation})=>{
   const [video, setVideo] = useState(null);
 
   useEffect(()=>{
-    dispatch(Actions.getAvideo({videoId:videoId}))
+    dispatch(Actions.cleanVideo());
+    dispatch(Actions.getAvideo({videoId:videoId}));
   },[dispatch])
 
   useEffect(()=>{
@@ -25,19 +26,27 @@ const VideoPlayerScreen = ({navigation})=>{
   },[videoData]);
 
   if( !video ){
-      return <Text> is loading </Text>
+    return (
+      <View style={{
+        flex: 1,
+        justifyContent: "flex-start",
+        padding: '50%'
+      }}>
+        <ActivityIndicator size="large" color="#0000ff" />
+      </View>
+    );
   }
 
   const { width } = Dimensions.get('window');
+
   return(
     <View style={styles.container}>
-      <Text style={{ textAlign: 'center' }}> React Native Video </Text>
       <WebView
         style={[styles.WebViewContainer]}
         javaScriptEnabled={true}
         domStorageEnabled={true}
         allowsFullscreenVideo={true}
-        source={{uri: "https://www.youtube.com/watch?v=F1B9Fk_SgI0" }}
+        source={{uri: video.uri }}
       />
 
       {/* <Video
@@ -73,7 +82,7 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(0, 0, 0, 0.5)",
   },
   WebViewContainer:{
-    marginTop: (Platform.OS == 'android') ? 20 : 0,
+    marginTop: (Platform.OS == 'android') ? 0 : 0,
    }
 });
 

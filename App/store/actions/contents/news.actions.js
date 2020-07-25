@@ -29,3 +29,9 @@ export function getAvideo( payload ){
     payload
   }
 }
+
+export function cleanVideo(){
+  return {
+    type: 'CLEAN_VIDEO',
+  }
+}
