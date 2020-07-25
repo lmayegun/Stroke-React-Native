@@ -1,5 +1,10 @@
 import React, {useRef} from 'react';
-import {ContentTitle, ContentLastUpdated, ContentFeatureImage} from '../components/content';
+import {
+        ContentTitle, 
+        ContentLastUpdated, 
+        ContentFeatureImage, 
+        ContentVideo
+      } from '../components/content';
 
 class AppUtils {
 
@@ -31,6 +36,12 @@ class AppUtils {
         case 'thumbnail':{
           items.push(
             <ContentFeatureImage key={i} image={item.value}/>
+          )
+          break;
+        }
+        case 'video':{ 
+          items.push(
+            <ContentVideo key={i} videoUrl={item.value}/>
           )
           break;
         }

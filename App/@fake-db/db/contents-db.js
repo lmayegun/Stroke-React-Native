@@ -35,6 +35,7 @@ const contentsDB = {
         {key:"title", value:"chance magna excepteur deserunt nostrud commodo amet sunt aute nulla ipsum"},
         {key:"posted", value:"2020 06 03 19 40"},
         {key:"thumbnail", value:require("../../assets/images/contents/thumbnail/tash.png")},
+        {key:"video", value:"https://www.youtube.com/embed/YE7VzlLtp-4"},
         {key:"summary", value:"Consectetur et laboris enim excepteur sit deserunt ex ipsum anim veniam laborum labore duis ad. Anim quis eiusmod cillum eiusmod eiusmod occaecat ad minim enim consectetur excepteur deserunt. Culpa magna do magna consectetur nostrud nulla commodo dolor. Adipisicing ipsum excepteur incididunt pariatur fugiat. Id esse eu veniam est veniam ex pariatur eiusmod occaecat ea. Adipisicing qui cillum consequat nisi exercitation proident exercitation cillum dolor nulla et adipisicing sit est.\r\n"},
         {key:"title", value:"magna excepteur deserunt nostrud commodo amet sunt aute nulla ipsum"},
       ]
@@ -87,6 +88,7 @@ const contentsDB = {
         {key:"title", value:"magna excepteur deserunt nostrud commodo amet sunt aute nulla ipsum"},
         {key:"posted", value:"2020 06 03 20 15"},
         {key:"thumbnail", value:require("../../assets/images/contents/thumbnail/tash.png")},
+        {key:"video", value:"https://www.youtube.com/watch?v=RH9kl6XZixo"},
         {key:"summary", value:"Consectetur et laboris enim excepteur sit deserunt ex ipsum anim veniam laborum labore duis ad. Anim quis eiusmod cillum eiusmod eiusmod occaecat ad minim enim consectetur excepteur deserunt. Culpa magna do magna consectetur nostrud nulla commodo dolor. Adipisicing ipsum excepteur incididunt pariatur fugiat. Id esse eu veniam est veniam ex pariatur eiusmod occaecat ea. Adipisicing qui cillum consequat nisi exercitation proident exercitation cillum dolor nulla et adipisicing sit est.\r\n"},
         {key:"title", value:"magna excepteur deserunt nostrud commodo amet sunt aute nulla ipsum"},
       ]
