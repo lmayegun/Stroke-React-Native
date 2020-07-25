@@ -21,7 +21,7 @@ const ContentThumbnail = ({content, navigation}) => {
       onPress={()=>{navigation.navigate('Content', {id:id} )}}
       >
         <Image
-          source={thumbnail}
+          source={{uri:thumbnail}}
           style={[styles.image]}
         />
         <View style={[styles.summary]}>
