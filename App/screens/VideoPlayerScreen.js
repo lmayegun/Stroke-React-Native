@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Video } from 'expo-av';
 import { MaterialIcons, Octicons } from '@expo/vector-icons';
 
+import { WebView } from 'react-native-webview';
+
 import * as Actions from '../store/actions/contents/news.actions';
 
 const VideoPlayerScreen = ({navigation})=>{
@@ -26,19 +28,26 @@ const VideoPlayerScreen = ({navigation})=>{
       return <Text> is loading </Text>
   }
 
-  console.log(video, "vimeo")
   const { width } = Dimensions.get('window');
   return(
     <View style={styles.container}>
       <Text style={{ textAlign: 'center' }}> React Native Video </Text>
-      <Video
+      <WebView
+        style={[styles.WebViewContainer]}
+        javaScriptEnabled={true}
+        domStorageEnabled={true}
+        allowsFullscreenVideo={true}
+        source={{uri: "https://www.youtube.com/watch?v=F1B9Fk_SgI0" }}
+      />
+
+      {/* <Video
         source={video.video}
         shouldPlay={true}
         resizeMode="cover"
         style={{ width, height: 300 }}
         isMuted={false}
         useNativeControls={true}
-      />
+      /> */}
     </View>
   )
 }
@@ -46,9 +55,11 @@ const VideoPlayerScreen = ({navigation})=>{
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#000',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#fff',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent:'flex-start',
+    padding: 0
   },
   controlBar: {
     position: 'absolute',
@@ -60,7 +71,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: "rgba(0, 0, 0, 0.5)",
-  }
+  },
+  WebViewContainer:{
+    marginTop: (Platform.OS == 'android') ? 20 : 0,
+   }
 });
 
 export default withNavigation(VideoPlayerScreen);

@@ -13,7 +13,7 @@ const FullWidthThumb = ({content, navigation})=>{
         onPress={()=>{navigation.navigate('Content', {id:id} )}}
         >
         <Image
-          source={thumbnail}
+          source={{uri:thumbnail}}
           style={[styles.image]}
           resizeMode="cover"
         />

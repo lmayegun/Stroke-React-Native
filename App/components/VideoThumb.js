@@ -11,7 +11,7 @@ const VideoThumb = ({navigation, data, container, videoWrapper, description})=>{
         onPress={()=>{ navigation.navigate('VideoPlayer', {id:item.id}) }}
         >
         <ImageBackground
-          source={item.thumbnail}
+          source={{uri:item.thumbnail}}
           style={[styles.videoWrapper, videoWrapper]}>
           <FontAwesome name="play-circle" color={'#fff'} size={30} style={[styles.videoIcon]} />
         </ImageBackground>
