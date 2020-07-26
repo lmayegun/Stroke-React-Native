@@ -3,7 +3,8 @@ import {
         ContentTitle, 
         ContentLastUpdated, 
         ContentFeatureImage, 
-        ContentVideo
+        ContentVideo,
+        ContentText
       } from '../components/content';
 
 class AppUtils {
@@ -43,6 +44,12 @@ class AppUtils {
           items.push(
             <ContentVideo key={i} videoUrl={item.value}/>
           )
+          break;
+        }
+        case 'text':{
+          items.push(
+            <ContentText key={i} text={item.value} />
+          );
           break;
         }
         default:{
