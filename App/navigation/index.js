@@ -22,8 +22,6 @@ import {
   SearchStackNavigator,
 } from './stackNavigators';
 
-
-
 const MainTabNavigator = createBottomTabNavigator(
   {
     Home: HomeStackNavigator,

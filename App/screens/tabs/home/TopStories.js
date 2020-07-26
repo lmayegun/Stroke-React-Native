@@ -4,6 +4,7 @@ import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 import { useDispatch, useSelector } from 'react-redux';
 import {withNavigation} from 'react-navigation';
 
+import {ActivityLoader} from '../../../components/content';
 import {ContentThumbnail, FullWidthThumb, VideoThumb} from '../../../components';
 import {Colors} from '../../../utils/Colors';
 import * as Actions from '../../../store/actions/contents/news.actions';
@@ -27,22 +28,12 @@ const TopStories = ({navigation, route}) => {
     setVideos(videosData)
   },[contentsData, videosData])
 
-  useEffect(()=>{
-    return () =>{
-      // alert("hi")
-      // console.log("contentsData", "cheese")
-    }
-  },[])
 
   if( !contents ){
-    return <Text> is loading </Text>
+    return (
+      <ActivityLoader />
+    );
   }
-
-  console.log(route.key)
-
-  // if( !videos ){
-  //   return null
-  // }
 
   return(
     <View style={[styles.scene]}>
