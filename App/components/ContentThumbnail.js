@@ -8,7 +8,7 @@ import {Colors} from '../utils/Colors';
 import TagLabel from './TagLabel';
 
 const ContentThumbnail = ({content, navigation}) => {
-  const {id, posted, tagName, title, thumbnail} = content;
+  const {id, publishedOn, category, title, thumbImage} = content;
 
   return(
     <View style={[styles.root]}>
@@ -21,15 +21,15 @@ const ContentThumbnail = ({content, navigation}) => {
       onPress={()=>{navigation.navigate('Content', {id:id} )}}
       >
         <Image
-          source={{uri:thumbnail}}
+          source={{uri:thumbImage}}
           style={[styles.image]}
         />
         <View style={[styles.summary]}>
           <View style={[styles.timeAndTag]}>
-            <TagLabel tagName={tagName}/>
+            <TagLabel tagName={category}/>
             <View style={[styles.time]}>
               <MaterialCommunityIcons name="progress-clock" color={'#ccc'} size={20} style={{marginRight: 4}} />
-              <Text>{moment(posted, "YYYYMMDD h:mm:ss").fromNow()}</Text>
+              <Text>{moment(publishedOn, "YYYYMMDD h:mm:ss").fromNow()}</Text>
             </View>
           </View>
           <Text>{title}</Text>

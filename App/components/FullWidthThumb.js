@@ -5,7 +5,12 @@ import {withNavigation} from 'react-navigation';
 import moment from 'moment';
 
 const FullWidthThumb = ({content, navigation})=>{
-  const {id, posted, tagName, title, thumbnail, video} = content;
+  const {id, publishedOn, tagName, title, thumbImage, video} = content;
+
+  if(!content){
+    return <Text>Loading...</Text>
+  }
+
   return(
     <View style={[styles.container]}>
       <TouchableOpacity
@@ -13,21 +18,21 @@ const FullWidthThumb = ({content, navigation})=>{
         onPress={()=>{navigation.navigate('Content', {id:id} )}}
         >
         <Image
-          source={{uri:thumbnail}}
+          source={{uri:thumbImage}}
           style={[styles.image]}
           resizeMode="cover"
         />
       </TouchableOpacity>
       {
         video ?
-        <FontAwesome name="play-circle" color={'#fff'} size={30} style={[styles.videoIcon]} /> :
+        <FontAwesome name="play-circle" color={'#fff'} size={30} style={[styles.videoIcon]} /> : 
         null
       }
       <View style={[styles.summaryWrapper]}>
         <View style={[styles.tagAndTime]}>
           <Text style={[styles.tag]}> Breaking </Text>
           <MaterialCommunityIcons name="progress-clock" color={'#ccc'} size={20} style={{marginRight: 4}} />
-          <Text style={[styles.time]}> {moment(posted, "YYYYMMDD h:mm:ss").fromNow()} </Text>
+          <Text style={[styles.time]}> {moment(publishedOn, "YYYYMMDD h:mm:ss").fromNow()} </Text>
         </View>
         <View>
           <Text style={[styles.summary]}>{title}</Text>

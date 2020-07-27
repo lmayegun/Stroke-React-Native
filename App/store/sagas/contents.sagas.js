@@ -1,15 +1,16 @@
 import { put, takeLatest, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 
-function* getContent(payload){
+function* getContent({payload}){
+  const { contentId } = payload;
+
   try{
-    const request = yield axios.get('/api/contents-app/content', {
-                                        params:payload.payload
-                                      })
-                                      .then((response) => {
-                                        return response.data
-                                      });
-    yield put({ type: 'GET_CONTENT_SUCCESS', payload:request });
+    const request = yield axios
+                          .get(`https://d8-recruiter-rest-simulator.herokuapp.com/api/posts/${contentId}` )
+                            .then((response) => {
+                              return response.data
+                            });
+    yield put({ type: 'GET_CONTENT_SUCCESS', payload: request.post });
   } catch (error){
     yield put({ type: 'GET_CONTENT_FAILED', payload:'failed' });
   }
@@ -17,11 +18,12 @@ function* getContent(payload){
 
 function* getContentNews(){
   try{
-    const request = yield axios.get('/api/contents-app/contents').then((response) => {
+    const request = yield axios.get('https://d8-recruiter-rest-simulator.herokuapp.com/api/posts/').then((response) => {
         return response.data
       }
     );
-    yield put({ type: 'GET_ALL_NEWS_SUCCESS', payload:request });
+    console.log(request, "news");
+    yield put({ type: 'GET_ALL_NEWS_SUCCESS', payload: request.reverse() });
   } catch (error){
     yield put({ type: 'GET_ALL_NEWS_FAIL', payload:'failed' });
   }
