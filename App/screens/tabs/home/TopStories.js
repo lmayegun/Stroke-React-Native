@@ -19,7 +19,7 @@ const TopStories = ({navigation, route}) => {
   const [videos, setVideos] = useState(null)
 
   useEffect(()=>{
-    dispatch(Actions.getNewsContent());
+    dispatch(Actions.getContents({ category: false}));
     dispatch(Actions.getAllVideos());
   },[dispatch])
 
@@ -27,7 +27,6 @@ const TopStories = ({navigation, route}) => {
     setContents(contentsData)
     setVideos(videosData)
   },[contentsData, videosData])
-
 
   if( !contents ){
     return (

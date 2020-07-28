@@ -11,12 +11,13 @@ import * as Actions from '../store/actions/contents/news.actions';
 const { width } = Dimensions.get('window');
 
 const CategoryScreen = ({navigation}) => {
+
   const dispatch = useDispatch();
-  const contentsData = useSelector( ({news}) => news.newsState );
+  const contentsData = useSelector( ({news}) => news.contentTypeState );
   const [contents, setContents] = useState(null)
 
   useEffect(()=>{
-    dispatch(Actions.getNewsContent());
+    dispatch(Actions.getContentsByTypes({ category: navigation.state.params.name}));
   },[dispatch])
 
   useEffect(()=>{
