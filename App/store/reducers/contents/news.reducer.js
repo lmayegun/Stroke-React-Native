@@ -8,6 +8,21 @@ const news = function( state = initialState, action ){
       return{
         newsState: action.payload
       }
+      break;
+    }
+    case 'GET_EVENTS_SUCCESS':
+    {
+      return{
+        ...state, 
+        eventsState : action.payload
+      }
+    }
+    case 'GET_CONTENTS_TYPE_SUCCESS':
+    {
+      return{
+        ...state, 
+        contentTypeState : action.payload
+      }
     }
     default:
     {

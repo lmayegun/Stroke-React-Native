@@ -16,22 +16,68 @@ function* getContent({payload}){
   }
 }
 
-function* getContentNews(){
+function* getContents({ payload }){
+
+  const category = !!payload.category ? payload.category : undefined; 
+  
+
   try{
-    const request = yield axios.get('https://d8-recruiter-rest-simulator.herokuapp.com/api/posts/').then((response) => {
+    let request;
+    if ( category ){
+      request = yield axios.get(`https://d8-recruiter-rest-simulator.herokuapp.com/api/posts/?category=${category}`).then((response) => {
         return response.data
-      }
-    );
-    console.log(request, "news");
+      });
+    } else {
+      request = yield axios.get('https://d8-recruiter-rest-simulator.herokuapp.com/api/posts/').then((response) => {
+        return response.data
+      });  
+    }
+
     yield put({ type: 'GET_ALL_NEWS_SUCCESS', payload: request.reverse() });
   } catch (error){
     yield put({ type: 'GET_ALL_NEWS_FAIL', payload:'failed' });
   }
 }
 
+function* getContentsByTypes({ payload }){
+
+  const category = !!payload.category ? payload.category : undefined; 
+
+  try{
+    let request;
+    if ( category ){
+      request = yield axios.get(`https://d8-recruiter-rest-simulator.herokuapp.com/api/posts/?category=${category}`).then((response) => {
+        return response.data
+      });
+    } else {
+      request = yield axios.get('https://d8-recruiter-rest-simulator.herokuapp.com/api/posts/').then((response) => {
+        return response.data
+      });  
+    }
+
+    yield put({ type: 'GET_CONTENTS_TYPE_SUCCESS', payload: request.reverse() });
+  } catch (error){
+    yield put({ type: 'GET_CONTENTS_TYPE_FAIL', payload:'failed' });
+  }
+}
+
+function* getEvents({ payload }){
+
+  try{
+    const request = yield axios.get(`https://d8-recruiter-rest-simulator.herokuapp.com/api/posts/?category=events`)
+                                .then((response) => {
+                                  return response.data
+                                });
+
+    yield put({ type: 'GET_EVENTS_SUCCESS', payload: request.reverse() });
+  } catch (error){
+    yield put({ type: 'GET_EVENTS_FAIL', payload:'failed' });
+  }
+}
+
 function* getVideos(){
   try{
-    const request = yield axios.get('/api/contents-app/videos').then((response) => {
+    const request = yield axios.get('https://d8-recruiter-rest-simulator.herokuapp.com/api/videos/').then((response) => {
         return response.data
       }
     );
@@ -42,10 +88,9 @@ function* getVideos(){
 }
 
 function* getVideo(payload){
+  const { contentId } = payload;
   try{
-    const request = yield axios.get('/api/contents-app/video', {
-                                        params:payload.payload
-                                      })
+    const request = yield axios.get(`https://d8-recruiter-rest-simulator.herokuapp.com/api/posts/${contentId}`)
                                       .then((response) => {
                                         return response.data
                                       });
@@ -56,7 +101,9 @@ function* getVideo(payload){
 }
 
 export const contentsSagas = [
-  takeLatest('GET_ALL_NEWS', getContentNews),
+  takeLatest('GET_CONTENTS', getContents),
+  takeLatest('GET_CONTENTS_BY_TYPES', getContentsByTypes),
+  takeLatest('GET_EVENTS', getEvents),
   takeLatest('GET_CONTENT', getContent),
   takeLatest('GET_ALL_VIDEOS', getVideos),
   takeLatest('GET_VIDEO', getVideo),

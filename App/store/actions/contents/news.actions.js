@@ -1,6 +1,21 @@
-export function getNewsContent(){
+export function getContents( payload ){
   return {
-    type: 'GET_ALL_NEWS',
+    type: 'GET_CONTENTS',
+    payload
+  }
+}
+
+export function getContentsByTypes( payload ){
+  return {
+    type: 'GET_CONTENTS_BY_TYPES',
+    payload
+  }
+}
+
+export function getEvents( payload ){
+  return {
+    type: 'GET_EVENTS',
+    payload
   }
 }
 

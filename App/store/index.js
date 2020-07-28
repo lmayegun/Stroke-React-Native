@@ -12,7 +12,7 @@ const store = createStore(
 );
 
 store.subscribe(()=>{
-  // console.log(store.getState())
+  console.log(store.getState())
 })
 
 sagaMiddeleware.run(APPsagas);
