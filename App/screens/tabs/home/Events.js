@@ -12,21 +12,18 @@ import * as Actions from '../../../store/actions/contents/news.actions';
 const { width } = Dimensions.get('window');
 
 const Events = ({navigation, route}) => {
+  
   const dispatch = useDispatch();
-  const contentsData = useSelector( ({news}) => news.newsState );
-  const videosData = useSelector( ({videos}) => videos.videosState );
+  const contentsData = useSelector( ({news}) => news.eventsState );
   const [contents, setContents] = useState(null)
-  const [videos, setVideos] = useState(null)
 
   useEffect(()=>{
-    dispatch(Actions.getNewsContent());
-    dispatch(Actions.getAllVideos());
+    dispatch(Actions.getEvents());
   },[dispatch])
 
   useEffect(()=>{
     setContents(contentsData)
-    setVideos(videosData)
-  },[contentsData, videosData])
+  },[contentsData])
 
   if( !contents ){
     return (
