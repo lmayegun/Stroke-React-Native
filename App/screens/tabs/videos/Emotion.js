@@ -21,11 +21,17 @@ const Emotion = ({navigation}) => {
   },[dispatch])
 
   useEffect(()=>{
-    setVideos(videosData)
+    if( videosData ){
+      setVideos(videosData.filter( video => video.category == 'Emotion'));
+    }
   },[videosData])
 
   if( !videos ){
     return <ActivityLoader />
+  }
+
+  if( videos.length < 1){
+    return <Text> Can't find any video</Text>
   }
 
   return(
