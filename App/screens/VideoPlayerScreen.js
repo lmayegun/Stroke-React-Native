@@ -17,6 +17,7 @@ const VideoPlayerScreen = ({navigation})=>{
   const videoData = useSelector(({videos})=> videos.videoState );
 
   const [video, setVideo] = useState(null);
+  
 
   useEffect(()=>{
     dispatch(Actions.cleanVideo());

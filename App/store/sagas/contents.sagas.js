@@ -87,14 +87,17 @@ function* getVideos(){
   }
 }
 
-function* getVideo(payload){
-  const { contentId } = payload;
+function* getVideo({payload}){
+
+  const { videoId } = payload;
+
   try{
-    const request = yield axios.get(`https://d8-recruiter-rest-simulator.herokuapp.com/api/posts/${contentId}`)
+    const request = yield axios.get(`https://d8-recruiter-rest-simulator.herokuapp.com/api/videos/${videoId}`)
                                       .then((response) => {
                                         return response.data
                                       });
-    yield put({ type: 'GET_VIDEO_SUCCESS', payload:request });
+
+    yield put({ type: 'GET_VIDEO_SUCCESS', payload:request.video });
   } catch (error){
     yield put({ type: 'GET_VIDEO_FAILED', payload:'failed' });
   }
