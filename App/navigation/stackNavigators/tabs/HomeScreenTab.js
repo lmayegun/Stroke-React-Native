@@ -11,7 +11,7 @@ const initialLayout = { width: Dimensions.get('window').width};
 const renderTabBar = props =>(
   <TabBar
     {...props}
-    indicatorStyle={{ backgroundColor: 'purple' }}
+    indicatorStyle={{ backgroundColor: '#5b358c' }}
     tabStyle={{
       margin: 0,
       padding: 0,
@@ -25,7 +25,7 @@ const renderTabBar = props =>(
     bounce={true}
     scrollEnabled={true}
     inactiveColor={'#000000'}
-    activeColor={'purple'}
+    activeColor={'#5b358c'}
     getLabelText={({ route }) => <Text style={{ padding:0, margin:0, fontSize: 12, fontWeight:'bold'}}> {route.title} </Text>}
     style={{height:'auto', padding:0, backgroundColor:'white'}}
   />
@@ -37,14 +37,12 @@ const HomeScreenTab = ()=> {
     { key: 'topStories', title: 'Top Stories' },
     { key: 'events', title: 'Event and Challenges' },
     { key: 'infoSup', title: 'Info & Support' },
-    // { key: 'msgHub', title: 'My MSG' },
   ]);
 
   const renderScene = SceneMap({
     topStories: TopStories,
     events: Events,
     infoSup: InfoSupport,
-    // msgHub: MsgHub,
   });
 
   return (

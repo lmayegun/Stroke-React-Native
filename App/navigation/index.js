@@ -87,7 +87,7 @@ const Navigation = createStackNavigator(
       return({
         headerStyle: {
           height: 80,
-          backgroundColor: 'purple',
+          backgroundColor: '#5b358c',
         },
         title: <ScreenTitle nav={navigation}/>,
         headerTitleAlign: 'center',

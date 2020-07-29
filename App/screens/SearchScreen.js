@@ -1,12 +1,28 @@
-import React, {useState} from 'react';
-import { View, Text, StyleSheet, TextInput, Button, ScrollView, Animated, Image } from 'react-native';
+import React, {useState, useEffect} from 'react';
+import { View, Text, StyleSheet, TextInput, ScrollView, Animated, Image, FlatList } from 'react-native';
 import { withNavigation } from 'react-navigation';
+import { useDispatch, useSelector } from 'react-redux';
 
 import {ContentThumbnail} from '../components';
+import {ActivityLoader} from '../components/content';
 
 const SearchScreen = props =>{
     const {navigation} = props;
+
+    const contentsData = useSelector( ({news}) => news.newsState );
+
     const [searchText, setSearchText] = useState('');
+    const [contents, setContents] = useState(null)
+
+    useEffect(()=>{
+        setContents(contentsData)
+    },[contentsData]);
+
+    if( !contents ){
+        return (
+            <ActivityLoader />
+        );
+    }
 
     return(
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'flex-start', backgroundColor:'white'}}>
@@ -23,25 +39,21 @@ const SearchScreen = props =>{
                     onChangeText={(text) => setSearchText({ text })}
                     value={searchText}
                     style={styles.textInput}
+                    onEndEditing={()=>{alert("submitting")}}
                     clearButtonMode="while-editing"
                 />
             </View>
-            <Button
-                title="Submit"
-                onPress={() => navigation.navigate('Home')}
-            />
         </View>
-        <ScrollView style={{width:100+'%'}}>
-            <ContentThumbnail />
-            <ContentThumbnail />
-            <ContentThumbnail />
-            <ContentThumbnail />
-            <ContentThumbnail />
-            <ContentThumbnail />
-            <ContentThumbnail />
-            <ContentThumbnail />
-            <ContentThumbnail />
-            <ContentThumbnail />
+        <ScrollView style={{width:100+'%', paddingLeft:6}}>
+            <FlatList
+                data={contents}
+                keyExtractor={(item)=> item.id}
+                renderItem={({item, index})=>{
+                    return(
+                        <ContentThumbnail content={item} />
+                    )
+                }}
+            />
         </ScrollView>
       </View>
     );
@@ -49,13 +61,13 @@ const SearchScreen = props =>{
 
 const styles = StyleSheet.create({
     textInput:{
-        paddingLeft: 5,
-        paddingRight: 5,
-        width: 50 + '%',
+        paddingLeft: 10,
+        paddingRight: 10,
+        width: 100 + '%',
     },
     searchbox: {
         backgroundColor: 'rgba(0,0,0,0.1)',
-        height: 28,
+        height: 48,
         borderRadius: 4,
         margin: 15,
         flexDirection: 'row',
@@ -65,8 +77,8 @@ const styles = StyleSheet.create({
     placeholder: {
         position: 'absolute',
         right: 0,
-        padding: 5,
-        color: '#8E8E93',
+        padding: 10,
+        color: '#000',
         fontSize: 14,
     },
 })

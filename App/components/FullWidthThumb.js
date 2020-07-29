@@ -30,7 +30,7 @@ const FullWidthThumb = ({content, navigation})=>{
       }
       <View style={[styles.summaryWrapper]}>
         <View style={[styles.tagAndTime]}>
-          <Text style={[styles.tag]}> Breaking </Text>
+          <Text style={[styles.tag]}> Breaking News </Text>
           <MaterialCommunityIcons name="progress-clock" color={'#ccc'} size={20} style={{marginRight: 4}} />
           <Text style={[styles.time]}> {moment(publishedOn, "YYYYMMDD h:mm:ss").fromNow()} </Text>
         </View>
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
     flex: 2.5,
-    backgroundColor: 'yellow',
+    backgroundColor: '#5b358c',
     padding:10,
   },
   tagAndTime:{
@@ -83,9 +83,11 @@ const styles = StyleSheet.create({
   time:{
     fontSize: 12,
     padding: 2,
+    color:'#fff',
   },
   summary:{
     fontWeight: '100',
+    color:'#fff',
   },
   videoIcon:{
     position: 'absolute',

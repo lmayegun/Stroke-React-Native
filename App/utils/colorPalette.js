@@ -1,7 +1,7 @@
 export default function colorPalette(type){
   switch(type){
     case 'primary':{
-      return 'purple';
+      return '#5b358c';
       break;
     }
     default:{
