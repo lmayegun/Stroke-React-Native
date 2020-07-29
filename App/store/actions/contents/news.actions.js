@@ -52,9 +52,8 @@ export function cleanVideo(){
 }
 
 export function searchContents( payload ){
-  alert(payload.searchText)
   return {
-    type: 'SEARCH_CONTENTS',
+    type: 'GET_SEARCH_CONTENTS',
     payload
   }
 }

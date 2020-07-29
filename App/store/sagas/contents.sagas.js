@@ -103,8 +103,24 @@ function* getVideo({payload}){
   }
 }
 
+function* getSearchContents({ payload }){
+
+  const searchText = !!payload.searchText ? payload.searchText : ''; 
+  alert(searchText);
+  try{
+    const request = yield axios.get(`https://d8-recruiter-rest-simulator.herokuapp.com/api/posts/?search=${searchText}`).then((response) => {
+      return response.data
+    });  
+
+    yield put({ type: 'GET_SEARCH_CONTENTS_SUCCESS', payload: request.reverse() });
+  } catch (error){
+    yield put({ type: 'GET_SEARCH_CONTENTS_FAIL', payload:'failed' });
+  }
+}
+
 export const contentsSagas = [
   takeLatest('GET_CONTENTS', getContents),
+  takeLatest('GET_SEARCH_CONTENTS', getSearchContents),
   takeLatest('GET_CONTENTS_BY_TYPES', getContentsByTypes),
   takeLatest('GET_EVENTS', getEvents),
   takeLatest('GET_CONTENT', getContent),
