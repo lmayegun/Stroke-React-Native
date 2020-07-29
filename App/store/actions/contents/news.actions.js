@@ -50,3 +50,10 @@ export function cleanVideo(){
     type: 'CLEAN_VIDEO',
   }
 }
+
+export function searchContents( payload ){
+  return {
+    type: 'SEARCH_CONTENTS',
+    payload
+  }
+}
