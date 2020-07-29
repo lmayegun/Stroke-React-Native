@@ -5,14 +5,16 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import {ContentThumbnail} from '../components';
 import {ActivityLoader} from '../components/content';
+import * as Actions from '../store/actions/contents/news.actions';
 
 const SearchScreen = props =>{
     const {navigation} = props;
 
+    const dispatch = useDispatch();
     const contentsData = useSelector( ({news}) => news.newsState );
 
     const [searchText, setSearchText] = useState('');
-    const [contents, setContents] = useState(null)
+    const [contents, setContents] = useState(null);
 
     useEffect(()=>{
         setContents(contentsData)
@@ -36,15 +38,15 @@ const SearchScreen = props =>{
                 </Animated.Text>
                 <TextInput
                     placeholder="Search"
-                    onChangeText={(text) => setSearchText({ text })}
+                    onChangeText={(text) => setSearchText(text)}
                     value={searchText}
                     style={styles.textInput}
-                    onEndEditing={()=>{alert("submitting")}}
+                    onEndEditing={()=>{dispatch(Actions.searchContents({searchText:searchText}))}}
                     clearButtonMode="while-editing"
                 />
             </View>
         </View>
-        <ScrollView style={{width:100+'%', paddingLeft:6}}>
+        <View style={{width:100+'%', paddingLeft:6}}>
             <FlatList
                 data={contents}
                 keyExtractor={(item)=> item.id}
@@ -54,7 +56,7 @@ const SearchScreen = props =>{
                     )
                 }}
             />
-        </ScrollView>
+        </View>
       </View>
     );
 };
