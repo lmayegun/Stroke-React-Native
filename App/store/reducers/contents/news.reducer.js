@@ -24,6 +24,20 @@ const news = function( state = initialState, action ){
         contentTypeState : action.payload
       }
     }
+    case 'GET_SEARCH_CONTENTS_SUCCESS':
+    {
+      return{
+        ...state, 
+        searchContentState : action.payload
+      }
+    }
+    case 'GET_SEARCH_CONTENTS_FAIL':
+    {
+      return{
+        ...state, 
+        searchContentState : null
+      }
+    }
     default:
     {
       return state;

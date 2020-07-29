@@ -106,7 +106,7 @@ function* getVideo({payload}){
 function* getSearchContents({ payload }){
 
   const searchText = !!payload.searchText ? payload.searchText : ''; 
-  alert(searchText);
+
   try{
     const request = yield axios.get(`https://d8-recruiter-rest-simulator.herokuapp.com/api/posts/?search=${searchText}`).then((response) => {
       return response.data

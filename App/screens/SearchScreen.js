@@ -11,7 +11,7 @@ const SearchScreen = props =>{
     const {navigation} = props;
 
     const dispatch = useDispatch();
-    const contentsData = useSelector( ({news}) => news.newsState );
+    const contentsData = useSelector( ({news}) => news.searchContentState );
 
     const [searchText, setSearchText] = useState('');
     const [contents, setContents] = useState(null);
@@ -19,12 +19,6 @@ const SearchScreen = props =>{
     useEffect(()=>{
         setContents(contentsData)
     },[contentsData]);
-
-    if( !contents ){
-        return (
-            <ActivityLoader />
-        );
-    }
 
     return(
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'flex-start', backgroundColor:'white'}}>
@@ -46,8 +40,11 @@ const SearchScreen = props =>{
                 />
             </View>
         </View>
+
         <View style={{width:100+'%', paddingLeft:6}}>
-            <FlatList
+            { !contents && <Text style={{paddingLeft:6}}> Please refine your search keyword</Text> }
+            { contents && 
+                <FlatList
                 data={contents}
                 keyExtractor={(item)=> item.id}
                 renderItem={({item, index})=>{
@@ -56,6 +53,7 @@ const SearchScreen = props =>{
                     )
                 }}
             />
+            }
         </View>
       </View>
     );
