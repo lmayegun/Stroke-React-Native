@@ -3,7 +3,7 @@ import React from 'react';
 import {Provider} from 'react-redux';
 import store from './App/store';
 import MSGreact from './App/MSGreact';
-import './App/auth';
+import './App/services/firebase';
 
 const App = ()=>{
   return(

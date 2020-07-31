@@ -1,12 +1,11 @@
 import { put, takeLatest, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
-import firebase from 'firebase';
+import auth from '../../services/firebase';
 
 const ROOT_URL = 'https://us-central1-one-time-password-ff413.cloudfunctions.net';
 
 function* initLogin({payload}){
-  const {phone} = payload.phone;
-  const {code} = payload.code;
+  const {phone, code} = payload;
 
   const number = "+44"+phone;
 
@@ -14,7 +13,7 @@ function* initLogin({payload}){
     let { data } = yield axios.post(`${ROOT_URL}/verifyOneTimePassword`, {
       phone:number, code:code
     });
-    const result = firebase.auth().signInWithCustomToken(data.token);
+    const result = auth.signInWithCustomToken(data.token);
     result.then(()=>{
       alert('yeah we are in')
     })

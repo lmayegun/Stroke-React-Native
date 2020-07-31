@@ -27,7 +27,7 @@ const LoginScreen = ()=>{
         <Text style={[styles.label]}>Enter Phone Number</Text>
         <TextInput
           value={phone}
-          onChangeText={phone => setPhone({ phone })}
+          onChangeText={phone => setPhone(phone)}
           style={[styles.textInput]}
         />
       </View>
@@ -36,7 +36,7 @@ const LoginScreen = ()=>{
         <Text style={[styles.label]}>Enter Code</Text>
         <TextInput
           value={code}
-          onChangeText={code => setCode({ code })}
+          onChangeText={code => setCode(code)}
           style={[styles.textInput]}
         />
       </View>
